@@ -36,6 +36,9 @@ namespace WeatherStation
         public string getDescription(){
             return description;
         }
+        public getMonths(){
+            return months;
+        }
 
 
 
@@ -45,6 +48,9 @@ namespace WeatherStation
         }
         public void setDescription(string theDescription){
             description = theDescription;
+        }
+        public void setMonths(Month[]theMonths){
+            months = theMonths;
         }
     }
 }
