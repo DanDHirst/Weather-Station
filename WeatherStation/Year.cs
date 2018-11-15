@@ -11,13 +11,14 @@ namespace WeatherStation
         //properties
         private int year; // variable for the year
         private string description; // Variable for the descirption for the year
-        Month [] months = new Month [1]; // sets up the monthly obseveration array
+        Month [] months; // sets up the monthly obseveration array
         
         //constructors
         public void Year(int theYear, string theDescription, Month[]theMonths){
             year = theYear;
             Description = theDescription;
             months = theMonths;
+         
 
         }
         public void Year(int theYear, Month[]theMonths){
@@ -36,7 +37,7 @@ namespace WeatherStation
         public string getDescription(){
             return description;
         }
-        public getMonths(){
+        public Month[] getMonths(){
             return months;
         }
 
