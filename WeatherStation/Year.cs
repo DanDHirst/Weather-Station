@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherStation
+namespace WeatherStation // add validation using the books class on the getters and setters
 {
     class Year
     {
@@ -31,27 +31,27 @@ namespace WeatherStation
         
         
         // getters
-        public int getYear(){
+        public int getYear(){ // returns the year
             return year;
         }
-        public string getDescription(){
+        public string getDescription(){ // returns the desciption
             return description;
         }
-        public Month[] getMonths(){
+        public Month[] getMonths(){ // returns the months
             return months;
         }
 
 
 
-        // setters
-        public void setYear(int inYear){
+        // setters 
+        public void setYear(int inYear){ // sets the year
             year = inYear;  
         }
-        public void setDescription(string theDescription){
+        public void setDescription(string theDescription){ // sets the desciption
             description = theDescription;
         }
-        public void setMonths(Month[]theMonths){
+        public void setMonths(Month[] theMonths){
             months = theMonths;
         }
-    }
+    }// end of year class 
 }
