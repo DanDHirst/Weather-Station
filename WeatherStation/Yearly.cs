@@ -6,21 +6,32 @@ using System.Threading.Tasks;
 
 namespace WeatherStation
 {
-    class Year
+    class Yearly
     {
         //properties
         private int year; // variable for the year
         private string description; // Variable for the descirption for the year
         Month [] months; // sets up the monthly obseveration array
         
-        //constructors
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="theYear"></param>
+        /// <param name="theDescription"></param>
+        /// <param name="theMonths"></param>
+        /// 
         public void Year(int theYear, string theDescription, Month[]theMonths){
             year = theYear;
-            Description = theDescription;
+            description = theDescription;
             months = theMonths;
          
 
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="theYear"></param>
+        /// <param name="theMonths"></param>
         public void Year(int theYear, Month[]theMonths){
             year = theYear;
             months = theMonths;
@@ -28,9 +39,8 @@ namespace WeatherStation
 
 
         // methods
-        
-        
-        // getters
+
+        //getters
         public int getYear(){
             return year;
         }
@@ -40,6 +50,8 @@ namespace WeatherStation
         public Month[] getMonths(){
             return months;
         }
+        public string geTuyea(){
+}
 
 
 
