@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherStation // add validation using the books class on the getters and setters
+namespace WeatherStation
 {
     class Yearly
     {
@@ -39,50 +39,30 @@ namespace WeatherStation // add validation using the books class on the getters 
         }
 
 
-        // methods
-<<<<<<< HEAD:WeatherStation/Yearly.cs
 
         //getters
-        public int getYear(){
-=======
-        
         
         // getters
         public int getYear(){ // returns the year
->>>>>>> bef3cc1ea6ea9cf69a7876df6aae22f2e5f7dd3a:WeatherStation/Year.cs
             return year;
         }
         public string getDescription(){ // returns the desciption
             return description;
         }
-<<<<<<< HEAD:WeatherStation/Yearly.cs
-        public Monthly[] getMonths(){
-=======
-        public Month[] getMonths(){ // returns the months
->>>>>>> bef3cc1ea6ea9cf69a7876df6aae22f2e5f7dd3a:WeatherStation/Year.cs
+        public Monthly[] getMonths(){ // returns the months
             return months;
         }
 
 
 
-<<<<<<< HEAD:WeatherStation/Yearly.cs
-
-        // setters
-        public void setYear(int inYear){
-=======
         // setters 
         public void setYear(int inYear){ // sets the year
->>>>>>> bef3cc1ea6ea9cf69a7876df6aae22f2e5f7dd3a:WeatherStation/Year.cs
             year = inYear;  
         }
         public void setDescription(string theDescription){ // sets the desciption
             description = theDescription;
         }
-<<<<<<< HEAD:WeatherStation/Yearly.cs
         public void setMonths(Monthly[]theMonths){
-=======
-        public void setMonths(Month[] theMonths){
->>>>>>> bef3cc1ea6ea9cf69a7876df6aae22f2e5f7dd3a:WeatherStation/Year.cs
             months = theMonths;
         }
     }// end of year class 
