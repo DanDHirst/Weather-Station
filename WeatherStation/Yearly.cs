@@ -16,9 +16,9 @@ namespace WeatherStation
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="theYear"></param>
-        /// <param name="theDescription"></param>
-        /// <param name="theMonths"></param>
+        /// <param year="theYear"></param>
+        /// <param description="theDescription"></param>
+        /// <param months="theMonths"></param>
 
         public Yearly(int theYear, string theDescription, Monthly[]theMonths){
             year = theYear;
@@ -30,8 +30,8 @@ namespace WeatherStation
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="theYear"></param>
-        /// <param name="theMonths"></param>
+        /// <param year="theYear"></param>
+        /// <param months="theMonths"></param>
 
         public Yearly(int theYear, Monthly[]theMonths){
             year = theYear;
