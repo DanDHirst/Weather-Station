@@ -11,16 +11,16 @@ namespace WeatherStation
         //properties
         private int year; // variable for the year
         private string description; // Variable for the descirption for the year
-        Month [] months; // sets up the monthly obseveration array
-        
+        Monthly [] months; // sets up the monthly obseveration array
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="theYear"></param>
         /// <param name="theDescription"></param>
         /// <param name="theMonths"></param>
-        /// 
-        public void Year(int theYear, string theDescription, Month[]theMonths){
+
+        public Yearly(int theYear, string theDescription, Monthly[]theMonths){
             year = theYear;
             description = theDescription;
             months = theMonths;
@@ -32,7 +32,8 @@ namespace WeatherStation
         /// </summary>
         /// <param name="theYear"></param>
         /// <param name="theMonths"></param>
-        public void Year(int theYear, Month[]theMonths){
+
+        public Yearly(int theYear, Monthly[]theMonths){
             year = theYear;
             months = theMonths;
         }
@@ -47,11 +48,10 @@ namespace WeatherStation
         public string getDescription(){
             return description;
         }
-        public Month[] getMonths(){
+        public Monthly[] getMonths(){
             return months;
         }
-        public string geTuyea(){
-}
+
 
 
 
@@ -62,7 +62,7 @@ namespace WeatherStation
         public void setDescription(string theDescription){
             description = theDescription;
         }
-        public void setMonths(Month[]theMonths){
+        public void setMonths(Monthly[]theMonths){
             months = theMonths;
         }
     }

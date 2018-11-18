@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherStation
 {
-    class Month
+    class Monthly
     {
         // set properties 
         private string id; // Month id number
@@ -17,7 +17,16 @@ namespace WeatherStation
         private int hoursSunshine; // Hours of sunchine that month
 
         //Constuctors 
-        public void Month(string theId, int theMaxTemp, int theMinTemp, int theNumDaysAirFrost,int theMmRainfall,int theHoursSunshine){
+        /// <summary>
+        /// Constructor for monthly observations
+        /// </summary>
+        /// <param id="theId"></param>
+        /// <param maxtemp="theMaxTemp"></param>
+        /// <param minTemp="theMinTemp"></param>
+        /// <param numDaysAirFrost="theNumDaysAirFrost"></param>
+        /// <param mmRainfall="theMmRainfall"></param>
+        /// <param hoursSunsine="theHoursSunshine"></param>
+        public Monthly(string theId, int theMaxTemp, int theMinTemp, int theNumDaysAirFrost,int theMmRainfall,int theHoursSunshine){
             id = theId;
             maxTemp = theMaxTemp;
             minTemp = theMinTemp;
