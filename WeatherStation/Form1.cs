@@ -16,5 +16,11 @@ namespace WeatherStation
         {
             InitializeComponent();
         }
+
+        private void btn_test_Click(object sender, EventArgs e)
+        {
+            Location plymouth = new Location("plymouth", "asda", "asd", "pl12", "324234", "213123");
+            MessageBox.Show(plymouth.getLocationName());
+        }
     }
 }

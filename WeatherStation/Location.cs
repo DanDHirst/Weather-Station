@@ -37,7 +37,16 @@ namespace WeatherStation
             longitude = theLongitude;
             years = theYears;
         }
-
+        public Location(string theLocationName, string theStreetNumAndName, string theCounty, string thePostCode, string theLatitude, string theLongitude)
+        {
+            locationName = theLocationName;
+            StreetNumAndName = theStreetNumAndName;
+            county = theCounty;
+            postCode = thePostCode;
+            latitude = theLatitude;
+            longitude = theLongitude;
+            years = null;
+        }
         //getters
         public string getLocationName()
         {
