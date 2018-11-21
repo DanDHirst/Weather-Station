@@ -37,11 +37,21 @@ namespace WeatherStation
             year = theYear;
             months = theMonths;
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param year="theYear"></param>
+        /// <param months=null></param>
+        public Yearly(int theYear)
+        {
+            year = theYear;
+            months = null;
+        }
 
 
 
         //getters
-        
+
         // getters
         public int getYear(){ // returns the year
             return year;

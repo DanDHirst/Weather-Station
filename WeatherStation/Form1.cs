@@ -19,8 +19,12 @@ namespace WeatherStation
 
         private void btn_test_Click(object sender, EventArgs e)
         {
-            Location plymouth = new Location("plymouth", "asda", "asd", "pl12", "324234", "213123");
-            MessageBox.Show(plymouth.getLocationName());
+            Location plymouth = new Location("plymouth", "asd2", "asd", "pl12", "324234", "213123");
+            Yearly id3 = new Yearly(2017);
+            Monthly febuary = new Monthly("asdasd", 2, 4, 2, 4, 2);
+            MessageBox.Show(plymouth.getLocationName()+ id3.getYear() + febuary.getId());
+
+
         }
     }
 }
