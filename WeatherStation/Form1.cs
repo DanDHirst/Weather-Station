@@ -69,9 +69,10 @@ namespace WeatherStation
                 }
                 Array.Resize(ref allTheLocations, size + 1);
                 allTheLocations[size] = tempLocation;
-
+                allTheYears = null; //reset the year array
 
             }
+
 
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
@@ -114,7 +115,11 @@ namespace WeatherStation
                 airFrost = Convert.ToDouble(theData.ReadLine());
                 rainfall = Convert.ToDouble(theData.ReadLine());
                 sunshine = Convert.ToDouble(theData.ReadLine());
-                theData.ReadLine();
+                if(amountOfMonths != 11)
+                {
+                    theData.ReadLine();
+                }
+
 
 
 
