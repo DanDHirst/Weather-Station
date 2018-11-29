@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WeatherStation
 {
@@ -24,6 +25,33 @@ namespace WeatherStation
             Monthly febuary = new Monthly("asdasd", 2, 4, 2, 4, 2);
             MessageBox.Show(plymouth.getLocationName()+ id3.getYear() + febuary.getId());
 
+
+        }
+        private void getLocation()
+        {
+            StreamReader TheData = new StreamReader(@"README EXTENDED.txt");
+            int NumLocations,NumOfYears;
+            string LocName, streetNumAndName,county,postCode,latitude,longitude;
+            Location[] allTheLocations;
+            Yearly[] allTheYears;
+            NumLocations = Convert.ToInt32(TheData.ReadLine());
+            while (!TheData.EndOfStream)
+            {
+
+                LocName = TheData.ReadLine();
+                streetNumAndName = TheData.ReadLine();
+                county = TheData.ReadLine();
+                postCode = TheData.ReadLine();
+                latitude = TheData.ReadLine();
+                longitude = TheData.ReadLine();
+                NumOfYears = Convert.ToInt32(TheData.ReadLine());
+                
+            }
+            //need to reset array data
+
+        }
+        private void getYear()
+        {
 
         }
     }
