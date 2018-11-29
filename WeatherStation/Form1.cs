@@ -115,9 +115,9 @@ namespace WeatherStation
                 airFrost = Convert.ToDouble(theData.ReadLine());
                 rainfall = Convert.ToDouble(theData.ReadLine());
                 sunshine = Convert.ToDouble(theData.ReadLine());
-                if(amountOfMonths != 11)
+                if(i < 11)
                 {
-                    theData.ReadLine();
+                   string bin = theData.ReadLine();
                 }
 
 
