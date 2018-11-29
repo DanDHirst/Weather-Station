@@ -55,7 +55,7 @@ namespace WeatherStation
                     getYear(TheData, ref allTheYears);
                 }
                 //create locaion object
-                Location tempLocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude, allTheYears);// issue
+                Location tempLocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude, allTheYears);
  
                 //size the array
                 int size;
