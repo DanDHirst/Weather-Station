@@ -30,6 +30,7 @@
         {
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btn_test = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // btn_test
@@ -41,6 +42,11 @@
             this.btn_test.Text = "Test";
             this.btn_test.UseVisualStyleBackColor = true;
             this.btn_test.Click += new System.EventHandler(this.btn_test_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // Form1
             // 
@@ -58,6 +64,7 @@
 
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btn_test;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

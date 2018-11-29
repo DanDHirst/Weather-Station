@@ -30,8 +30,11 @@ namespace WeatherStation
         }
         private void getLocation()
         {
-            StreamReader TheData = new StreamReader(@"README EXTENDED.txt");
-            int NumLocations,numOfYears;
+            string filename;
+            openFileDialog1.ShowDialog();
+            filename = openFileDialog1.FileName;
+            StreamReader TheData = new StreamReader(filename);
+            int numOfYears, NumLocations;
             string LocName, streetNumAndName,county,postCode,latitude,longitude;
             Location[] allTheLocations;
             Yearly[] allTheYears=null;
@@ -59,9 +62,26 @@ namespace WeatherStation
         private void getYear(StreamReader theData, ref Yearly[] allYears)
         {
             Monthly[] theMonths = null;
+            //readin
             string desciption;
             int yearID;
+            desciption = theData.ReadLine();
+            yearID = Convert.ToInt32(theData.ReadLine());
             getMonths(theData,ref theMonths);
+            //create object
+            Yearly tempYears = new Yearly(yearID,desciption,theMonths);
+            //resize array
+            int size;
+            if (allYears == null)
+            {
+                size = 0;
+            }
+            else
+            {
+                size = allYears.Length;
+            }
+            Array.Resize(ref allYears, size + 1);
+            allYears[size] = tempYears;
 
         }
         private void getMonths(StreamReader theData,ref Monthly[] theMonths)
@@ -71,7 +91,7 @@ namespace WeatherStation
             for (int i = 0; i < amountOfMonths; i++)
             {
                 string id;
-                int maxTemp, minTemp, airFrost, rainfall, sunshine;
+                double maxTemp, minTemp, airFrost, rainfall, sunshine;
                 //read in
                 id = theData.ReadLine();
                 maxTemp = Convert.ToInt32(theData.ReadLine());
@@ -83,7 +103,7 @@ namespace WeatherStation
 
 
                 //create object
-                Monthly month = new Monthly(id,maxTemp,minTemp,airFrost,rainfall,sunshine);
+                Monthly tempMonth = new Monthly(id,maxTemp,minTemp,airFrost,rainfall,sunshine);
                 //size the array
                 int size;
                 if (theMonths == null)
@@ -95,9 +115,14 @@ namespace WeatherStation
                     size = theMonths.Length;
                 }
                 Array.Resize(ref theMonths, size + 1);
-                theMonths[size] = month;
+                theMonths[size] = tempMonth;
             }
             
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
