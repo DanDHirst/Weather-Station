@@ -16,6 +16,7 @@ namespace WeatherStation
         public Form1()
         {
             InitializeComponent();
+            getLocation();
         }
 
         private void btn_test_Click(object sender, EventArgs e)
@@ -57,19 +58,46 @@ namespace WeatherStation
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
         {
+            Monthly[] theMonths = null;
             string desciption;
             int yearID;
-            getMonths(theData);
+            getMonths(theData,ref theMonths);
+
         }
-        private void getMonths(StreamReader theData)
+        private void getMonths(StreamReader theData,ref Monthly[] theMonths)
         {
+
             const int amountOfMonths = 12;
             for (int i = 0; i < amountOfMonths; i++)
             {
                 string id;
-                int maxTemp, minTemp, Airfrost, rainfall, Sunshine;
+                int maxTemp, minTemp, airFrost, rainfall, sunshine;
+                //read in
+                id = theData.ReadLine();
+                maxTemp = Convert.ToInt32(theData.ReadLine());
+                minTemp = Convert.ToInt32(theData.ReadLine());
+                airFrost = Convert.ToInt32(theData.ReadLine());
+                rainfall = Convert.ToInt32(theData.ReadLine());
+                sunshine = Convert.ToInt32(theData.ReadLine());
 
+
+
+                //create object
+                Monthly month = new Monthly(id,maxTemp,minTemp,airFrost,rainfall,sunshine);
+                //size the array
+                int size;
+                if (theMonths == null)
+                {
+                    size = 0;
+                }
+                else
+                {
+                    size = theMonths.Length;
+                }
+                Array.Resize(ref theMonths, size + 1);
+                theMonths[size] = month;
             }
+            
         }
     }
 }
