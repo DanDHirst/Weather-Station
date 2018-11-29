@@ -30,10 +30,10 @@ namespace WeatherStation
         private void getLocation()
         {
             StreamReader TheData = new StreamReader(@"README EXTENDED.txt");
-            int NumLocations,NumOfYears;
+            int NumLocations,numOfYears;
             string LocName, streetNumAndName,county,postCode,latitude,longitude;
             Location[] allTheLocations;
-            Yearly[] allTheYears;
+            Yearly[] allTheYears=null;
             NumLocations = Convert.ToInt32(TheData.ReadLine());
             while (!TheData.EndOfStream)
             {
@@ -44,15 +44,32 @@ namespace WeatherStation
                 postCode = TheData.ReadLine();
                 latitude = TheData.ReadLine();
                 longitude = TheData.ReadLine();
-                NumOfYears = Convert.ToInt32(TheData.ReadLine());
+                numOfYears = Convert.ToInt32(TheData.ReadLine());
+                for (int i = 0; i < numOfYears; i++)
+                {
+                    getYear(TheData, ref allTheYears);
+                }
+                
                 
             }
             //need to reset array data
 
         }
-        private void getYear()
+        private void getYear(StreamReader theData, ref Yearly[] allYears)
         {
+            string desciption;
+            int yearID;
+            getMonths(theData);
+        }
+        private void getMonths(StreamReader theData)
+        {
+            const int amountOfMonths = 12;
+            for (int i = 0; i < amountOfMonths; i++)
+            {
+                string id;
+                int maxTemp, minTemp, Airfrost, rainfall, Sunshine;
 
+            }
         }
     }
 }
