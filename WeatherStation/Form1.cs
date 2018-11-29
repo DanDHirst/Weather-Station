@@ -53,6 +53,8 @@ namespace WeatherStation
                 {
                     getYear(TheData, ref allTheYears);
                 }
+                Location templocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude, allTheYears):
+
                 
                 
             }
@@ -99,6 +101,7 @@ namespace WeatherStation
                 airFrost = Convert.ToDouble(theData.ReadLine());
                 rainfall = Convert.ToDouble(theData.ReadLine());
                 sunshine = Convert.ToDouble(theData.ReadLine());
+                theData.ReadLine();
 
 
 
