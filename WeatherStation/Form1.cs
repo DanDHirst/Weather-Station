@@ -21,10 +21,11 @@ namespace WeatherStation
 
         private void btn_test_Click(object sender, EventArgs e)
         {
-            Location plymouth = new Location("plymouth", "asd2", "asd", "pl12", "324234", "213123");
-            Yearly id3 = new Yearly(2017);
-            Monthly febuary = new Monthly("asdasd", 2, 4, 2, 4, 2);
-            MessageBox.Show(plymouth.getLocationName()+ id3.getYear() + febuary.getId());
+            // test data
+            //Location plymouth = new Location("plymouth", "asd2", "asd", "pl12", "324234", "213123"); 
+            //Yearly id3 = new Yearly(2017);
+            //Monthly febuary = new Monthly("asdasd", 2, 4, 2, 4, 2);
+            //MessageBox.Show(plymouth.getLocationName()+ id3.getYear() + febuary.getId());
 
 
         }
@@ -36,7 +37,7 @@ namespace WeatherStation
             StreamReader TheData = new StreamReader(filename);
             int numOfYears, NumLocations;
             string LocName, streetNumAndName,county,postCode,latitude,longitude;
-            Location[] allTheLocations;
+            Location[] allTheLocations=null;
             Yearly[] allTheYears=null;
             NumLocations = Convert.ToInt32(TheData.ReadLine());
             while (!TheData.EndOfStream)
@@ -53,12 +54,24 @@ namespace WeatherStation
                 {
                     getYear(TheData, ref allTheYears);
                 }
-                Location templocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude, allTheYears):
+                //create locaion object
+                Location tempLocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude, allTheYears);// issue
+ 
+                //size the array
+                int size;
+                if (allTheLocations == null)
+                {
+                    size = 0;
+                }
+                else
+                {
+                    size = allTheLocations.Length;
+                }
+                Array.Resize(ref allTheLocations, size + 1);
+                allTheLocations[size] = tempLocation;
 
-                
-                
+
             }
-            //need to reset array data
 
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
