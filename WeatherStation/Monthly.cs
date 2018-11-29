@@ -10,11 +10,11 @@ namespace WeatherStation
     {
         // set properties 
         private string id; // Month id number
-        private int maxTemp; // Maximum temperature
-        private int minTemp; // Minimum temperature
-        private int numDaysAirFrost; // Numer of days of air frost
-        private int mmRainfall; // Millimetres of rainfall in the month
-        private int hoursSunshine; // Hours of sunchine that month
+        private double maxTemp; // Maximum temperature
+        private double minTemp; // Minimum temperature
+        private double numDaysAirFrost; // Numer of days of air frost
+        private double mmRainfall; // Millimetres of rainfall in the month
+        private double hoursSunshine; // Hours of sunchine that month
 
         //Constuctors 
         /// <summary>
@@ -26,7 +26,7 @@ namespace WeatherStation
         /// <param numDaysAirFrost="theNumDaysAirFrost"></param>
         /// <param mmRainfall="theMmRainfall"></param>
         /// <param hoursSunsine="theHoursSunshine"></param>
-        public Monthly(string theId, int theMaxTemp, int theMinTemp, int theNumDaysAirFrost,int theMmRainfall,int theHoursSunshine){
+        public Monthly(string theId, double theMaxTemp, double theMinTemp, double theNumDaysAirFrost,double theMmRainfall,double theHoursSunshine){
             id = theId;
             maxTemp = theMaxTemp;
             minTemp = theMinTemp;
@@ -38,19 +38,19 @@ namespace WeatherStation
         public string getId(){ // returns id
             return id;
         }
-        public int getMaxTemp(){// returns Max temp
+        public double getMaxTemp(){// returns Max temp
             return maxTemp;
         }
-        public int getMinTemp(){// returns Min temp
+        public double getMinTemp(){// returns Min temp
             return minTemp;
         }
-        public int getNumDaysAirFrost(){// returns Number of Days of Air Frost
+        public double getNumDaysAirFrost(){// returns Number of Days of Air Frost
             return numDaysAirFrost;
         }
-        public int getMmRainfall(){// returns millimetres of rainfall that month
+        public double getMmRainfall(){// returns millimetres of rainfall that month
             return mmRainfall;
         }
-        public int getHoursSunshine(){// returns hours of sunshine that month
+        public double getHoursSunshine(){// returns hours of sunshine that month
             return hoursSunshine;
         }
 
@@ -58,19 +58,19 @@ namespace WeatherStation
         public void setId(string theId){ // sets the id 
             id = theId;
         }
-        public void setMaxTemp(int theMaxTemp){ // sets the max temp
+        public void setMaxTemp(double theMaxTemp){ // sets the max temp
             maxTemp = theMaxTemp;
         }       
-        public void setMinTemp(int theMinTemp){ //sets the minimum temp
+        public void setMinTemp(double theMinTemp){ //sets the minimum temp
             minTemp = theMinTemp;
         } 
-        public void setNumDaysAirFrost(int theNumDaysAirFrost){ // sets the number of days of Air Frost
+        public void setNumDaysAirFrost(double theNumDaysAirFrost){ // sets the number of days of Air Frost
             numDaysAirFrost = theNumDaysAirFrost;
         }
-        public void setMmRainfall(int theMmRainfall){ //sets the millimetres of rainfall that month
+        public void setMmRainfall(double theMmRainfall){ //sets the millimetres of rainfall that month
             mmRainfall = theMmRainfall;
         }
-        public void setHoursSunshine(int theHoursSunshine){ // sets the hours of sunshine in that month
+        public void setHoursSunshine(double theHoursSunshine){ // sets the hours of sunshine in that month
             hoursSunshine = theHoursSunshine;
         }
     }

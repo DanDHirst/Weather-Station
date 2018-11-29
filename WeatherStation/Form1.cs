@@ -94,11 +94,11 @@ namespace WeatherStation
                 double maxTemp, minTemp, airFrost, rainfall, sunshine;
                 //read in
                 id = theData.ReadLine();
-                maxTemp = Convert.ToInt32(theData.ReadLine());
-                minTemp = Convert.ToInt32(theData.ReadLine());
-                airFrost = Convert.ToInt32(theData.ReadLine());
-                rainfall = Convert.ToInt32(theData.ReadLine());
-                sunshine = Convert.ToInt32(theData.ReadLine());
+                maxTemp = Convert.ToDouble(theData.ReadLine());
+                minTemp = Convert.ToDouble(theData.ReadLine());
+                airFrost = Convert.ToDouble(theData.ReadLine());
+                rainfall = Convert.ToDouble(theData.ReadLine());
+                sunshine = Convert.ToDouble(theData.ReadLine());
 
 
 
