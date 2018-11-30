@@ -70,9 +70,16 @@ namespace WeatherStation
                 Array.Resize(ref allTheLocations, size + 1);
                 allTheLocations[size] = tempLocation;
                 allTheYears = null; //reset the year array
+                
 
             }
-
+            //TEST DATA
+            string testData;
+            foreach(Location l in allTheLocations)
+            {
+                lstLocations.Items.Add(l.getLocationName());
+            }
+           
 
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
