@@ -13,22 +13,14 @@ namespace WeatherStation
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
             getLocation();
+            showLocation();
         }
-
-        private void btn_test_Click(object sender, EventArgs e)
-        {
-            // test data
-            //Location plymouth = new Location("plymouth", "asd2", "asd", "pl12", "324234", "213123"); 
-            //Yearly id3 = new Yearly(2017);
-            //Monthly febuary = new Monthly("asdasd", 2, 4, 2, 4, 2);
-            //MessageBox.Show(plymouth.getLocationName()+ id3.getYear() + febuary.getId());
-
-
-        }
+        //data read in section
         private void getLocation()
         {
             string filename;
@@ -59,25 +51,19 @@ namespace WeatherStation
  
                 //size the array
                 int size;
-                if (allTheLocations == null)
+                if (Data.WeatherStationData == null)
                 {
                     size = 0;
                 }
                 else
                 {
-                    size = allTheLocations.Length;
+                    size = Data.WeatherStationData.Length;
                 }
-                Array.Resize(ref allTheLocations, size + 1);
-                allTheLocations[size] = tempLocation;
+                Array.Resize(ref Data.WeatherStationData, size + 1);
+                Data.WeatherStationData[size] = tempLocation;
                 allTheYears = null; //reset the year array
                 
 
-            }
-            //TEST DATA
-            string testData;
-            foreach(Location l in allTheLocations)
-            {
-                lstLocations.Items.Add(l.getLocationName());
             }
            
 
@@ -152,5 +138,87 @@ namespace WeatherStation
         {
 
         }
+        private void showLocation()
+        {
+            foreach (Location l in Data.WeatherStationData)
+            {
+                lstLocations.Items.Add(l.getLocationName());
+            }
+        }
+
+        int locationSelected = -1;
+        private void lstLocations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            locationSelected = lstLocations.SelectedIndex;
+            showLocationData();
+            showYears();
+
+        }
+        int yearSelected = -1;
+        private void lstYears_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            yearSelected = lstYears.SelectedIndex;
+            showYearData();
+            showMonths();
+        }
+        int monthSelected = -1;
+        private void lstMonths_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            monthSelected = lstMonths.SelectedIndex;
+            showMonthData();
+        }
+        private void showLocationData()
+        {
+            lstLocData.Items.Clear();
+            Location theLocation;
+            theLocation = Data.WeatherStationData[locationSelected];
+            lstLocData.Items.Add(theLocation.getLocationName());
+            lstLocData.Items.Add(theLocation.getStreetNumAndName());
+            lstLocData.Items.Add(theLocation.getCounty());
+            lstLocData.Items.Add(theLocation.getPostCode());
+            lstLocData.Items.Add(theLocation.getLatitude());
+            lstLocData.Items.Add(theLocation.getLongitude());
+
+        }
+
+        public void showYears()
+        {
+            lstYears.Items.Clear();
+            Yearly[] years = Data.WeatherStationData[locationSelected].getYears();
+            foreach(Yearly y in years)
+            {
+                lstYears.Items.Add(y.getYear());
+            }
+
+
+        }
+        private void showYearData()
+        {
+            lstYearData.Items.Clear();
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Yearly yearData = theYearData[yearSelected];
+            lstYearData.Items.Add(yearData.getYear());
+            lstYearData.Items.Add(yearData.getDescription());
+        }
+        private void showMonths()
+        {
+            lstMonths.Items.Clear();
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            foreach(Monthly m in theMonths)
+            {
+                lstMonths.Items.Add(m.getId());
+            }
+
+        }
+        private void showMonthData()
+        {
+            lstMonthData.Items.Clear();
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+
+        }
+
+        
     }
 }
