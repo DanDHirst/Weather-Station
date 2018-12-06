@@ -64,7 +64,6 @@ namespace WeatherStation
                 
 
             }
-           
 
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
@@ -133,10 +132,7 @@ namespace WeatherStation
             
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
 
-        }
         private void showLocation()
         {
             foreach (Location l in Data.WeatherStationData)

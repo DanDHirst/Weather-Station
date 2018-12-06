@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lstLocations = new System.Windows.Forms.ListBox();
             this.lstYears = new System.Windows.Forms.ListBox();
@@ -43,7 +42,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // lstLocations
             // 
@@ -135,8 +133,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListBox lstLocations;
         private System.Windows.Forms.ListBox lstYears;
