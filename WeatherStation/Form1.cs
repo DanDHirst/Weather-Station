@@ -29,7 +29,6 @@ namespace WeatherStation
             StreamReader TheData = new StreamReader(filename);
             int numOfYears, NumLocations;
             string LocName, streetNumAndName,county,postCode,latitude,longitude;
-            Location[] allTheLocations=null;
             Yearly[] allTheYears=null;
             NumLocations = Convert.ToInt32(TheData.ReadLine());
             while (!TheData.EndOfStream)
