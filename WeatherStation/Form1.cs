@@ -149,6 +149,7 @@ namespace WeatherStation
         int locationSelected = -1;
         private void lstLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearAllData();
             locationSelected = lstLocations.SelectedIndex;
             showLocationData();
             showYears();
@@ -216,9 +217,25 @@ namespace WeatherStation
             lstMonthData.Items.Clear();
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            Monthly month = theMonths[monthSelected];
+            lstMonthData.Items.Add(month.getId());
+            lstMonthData.Items.Add(month.getMaxTemp());
+            lstMonthData.Items.Add(month.getMinTemp());
+            lstMonthData.Items.Add(month.getNumDaysAirFrost());
+            lstMonthData.Items.Add(month.getMmRainfall());
+            lstMonthData.Items.Add(month.getHoursSunshine());
+
+        }
+        private void clearAllData()
+        {
+            lstLocData.Items.Clear();
+            lstYears.Items.Clear();
+            lstYearData.Items.Clear();
+            lstMonths.Items.Clear();
+            lstMonthData.Items.Clear();
 
         }
 
-        
+
     }
 }
