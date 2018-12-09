@@ -133,13 +133,7 @@ namespace WeatherStation
         }
 
 
-        private void showLocation()
-        {
-            foreach (Location l in Data.WeatherStationData)
-            {
-                lstLocations.Items.Add(l.getLocationName());
-            }
-        }
+
 
         int locationSelected = -1;
         private void lstLocations_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,20 +157,56 @@ namespace WeatherStation
             monthSelected = lstMonths.SelectedIndex;
             showMonthData();
         }
+        /// <summary>
+        /// the location routines
+        /// </summary>
+
+        private void showLocation()
+        {
+            foreach (Location l in Data.WeatherStationData)
+            {
+                lstLocations.Items.Add(l.getLocationName());
+            }
+        }
+
         private void showLocationData()
         {
             lstLocData.Items.Clear();
             Location theLocation;
             theLocation = Data.WeatherStationData[locationSelected];
-            lstLocData.Items.Add(theLocation.getLocationName());
-            lstLocData.Items.Add(theLocation.getStreetNumAndName());
-            lstLocData.Items.Add(theLocation.getCounty());
-            lstLocData.Items.Add(theLocation.getPostCode());
-            lstLocData.Items.Add(theLocation.getLatitude());
-            lstLocData.Items.Add(theLocation.getLongitude());
+            txtLocName.Text=theLocation.getLocationName();
+            txtstreetNumAndName.Text = theLocation.getStreetNumAndName();
+            txtCounty.Text = theLocation.getCounty();
+            txtPostCode.Text = theLocation.getPostCode();
+            txtLatitude.Text = theLocation.getLatitude();
+            txtLongitude.Text = theLocation.getLongitude();
 
         }
 
+        private void btnAddLoc_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void btnEditLoc_Click(object sender, EventArgs e)
+        {
+            Location theLocation;
+            theLocation = Data.WeatherStationData[locationSelected];
+            theLocation.setLocationName(txtLocName.Text);
+            theLocation.setStreetNumAndName(txtstreetNumAndName.Text);
+            theLocation.setCounty(txtCounty.Text);
+            theLocation.setPostCode(txtPostCode.Text);
+            theLocation.setLatitude(txtLatitude.Text);
+            theLocation.setLongitude(txtLongitude.Text);
+            // to refresh the list so the changes that are made show up
+            lstLocations.Items.Clear();
+            showLocation();
+
+        }
+        /// <summary>
+        /// All of the year subroutines
+        /// </summary>
         public void showYears()
         {
             lstYears.Items.Clear();
@@ -193,9 +223,28 @@ namespace WeatherStation
             lstYearData.Items.Clear();
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Yearly yearData = theYearData[yearSelected];
-            lstYearData.Items.Add(yearData.getYear());
-            lstYearData.Items.Add(yearData.getDescription());
+            txtYear.Text = yearData.getYear().ToString();
+            txtDescription.Text = yearData.getDescription();
         }
+        private void btnEditYear_Click(object sender, EventArgs e)
+        {
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Yearly yearData = theYearData[yearSelected];
+            yearData.setYear(Convert.ToInt32(txtYear.Text));
+            yearData.setDescription(txtDescription.Text);
+            // to refresh the list so the changes that are made show up
+            lstYears.Items.Clear();
+            showYears();
+
+        }
+
+        private void btnAddYear_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// All of the month routines
+        /// </summary>
         private void showMonths()
         {
             lstMonths.Items.Clear();
