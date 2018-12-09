@@ -183,6 +183,23 @@ namespace WeatherStation
 
         }
 
+
+
+        private void btnEditLoc_Click(object sender, EventArgs e)
+        {
+            Location theLocation;
+            theLocation = Data.WeatherStationData[locationSelected];
+            theLocation.setLocationName(txtLocName.Text);
+            theLocation.setStreetNumAndName(txtstreetNumAndName.Text);
+            theLocation.setCounty(txtCounty.Text);
+            theLocation.setPostCode(txtPostCode.Text);
+            theLocation.setLatitude(txtLatitude.Text);
+            theLocation.setLongitude(txtLongitude.Text);
+            // to refresh the list so the changes that are made show up
+            refreshLocation();
+
+        }
+
         private void btnAddLoc_Click(object sender, EventArgs e)
         {
             string LocName, streetNumAndName, county, postCode, latitude, longitude;
@@ -207,21 +224,6 @@ namespace WeatherStation
             }
             Array.Resize(ref Data.WeatherStationData, size + 1);
             Data.WeatherStationData[size] = tempLocation;
-            // to refresh the list so the changes that are made show up
-            refreshLocation();
-
-        }
-
-        private void btnEditLoc_Click(object sender, EventArgs e)
-        {
-            Location theLocation;
-            theLocation = Data.WeatherStationData[locationSelected];
-            theLocation.setLocationName(txtLocName.Text);
-            theLocation.setStreetNumAndName(txtstreetNumAndName.Text);
-            theLocation.setCounty(txtCounty.Text);
-            theLocation.setPostCode(txtPostCode.Text);
-            theLocation.setLatitude(txtLatitude.Text);
-            theLocation.setLongitude(txtLongitude.Text);
             // to refresh the list so the changes that are made show up
             refreshLocation();
 
