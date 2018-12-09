@@ -185,7 +185,30 @@ namespace WeatherStation
 
         private void btnAddLoc_Click(object sender, EventArgs e)
         {
-            
+            string LocName, streetNumAndName, county, postCode, latitude, longitude;
+            LocName = txtLocName.Text;
+            streetNumAndName = txtstreetNumAndName.Text;
+            county = txtCounty.Text;
+            postCode = txtPostCode.Text;
+            latitude = txtLatitude.Text;
+            longitude = txtLongitude.Text;
+            //create object 
+            Location tempLocation = new Location(LocName, streetNumAndName, county, postCode, latitude, longitude);
+
+            //resize the array
+            int size;
+            if (Data.WeatherStationData == null)
+            {
+                size = 0;
+            }
+            else
+            {
+                size = Data.WeatherStationData.Length;
+            }
+            Array.Resize(ref Data.WeatherStationData, size + 1);
+            Data.WeatherStationData[size] = tempLocation;
+            // to refresh the list so the changes that are made show up
+            refreshLocation();
 
         }
 
@@ -200,9 +223,13 @@ namespace WeatherStation
             theLocation.setLatitude(txtLatitude.Text);
             theLocation.setLongitude(txtLongitude.Text);
             // to refresh the list so the changes that are made show up
+            refreshLocation();
+
+        }
+        private void refreshLocation()
+        {
             lstLocations.Items.Clear();
             showLocation();
-
         }
         /// <summary>
         /// All of the year subroutines
@@ -211,9 +238,12 @@ namespace WeatherStation
         {
             lstYears.Items.Clear();
             Yearly[] years = Data.WeatherStationData[locationSelected].getYears();
-            foreach(Yearly y in years)
+            if (years != null)// to prevent the program crashing when a new location added and year is empty
             {
-                lstYears.Items.Add(y.getYear());
+                foreach (Yearly y in years)
+                {
+                    lstYears.Items.Add(y.getYear());
+                }
             }
 
 
@@ -240,6 +270,8 @@ namespace WeatherStation
 
         private void btnAddYear_Click(object sender, EventArgs e)
         {
+            
+           
 
         }
         /// <summary>
