@@ -171,7 +171,6 @@ namespace WeatherStation
 
         private void showLocationData()
         {
-            lstLocData.Items.Clear();
             Location theLocation;
             theLocation = Data.WeatherStationData[locationSelected];
             txtLocName.Text=theLocation.getLocationName();
@@ -252,7 +251,6 @@ namespace WeatherStation
         }
         private void showYearData()
         {
-            lstYearData.Items.Clear();
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Yearly yearData = theYearData[yearSelected];
             txtYear.Text = yearData.getYear().ToString();
@@ -281,13 +279,34 @@ namespace WeatherStation
         /// </summary>
         private void showMonths()
         {
-            lstMonths.Items.Clear();
-            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
-            Monthly[] theMonths = theYearData[yearSelected].getMonths();
-            foreach(Monthly m in theMonths)
-            {
-                lstMonths.Items.Add(m.getId());
+            const int rows = 12;
+            const int cols = 6;
+            //lstMonths.Items.Clear();
+            //Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            //Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            //foreach(Monthly m in theMonths)
+            //{
+            //    lstMonths.Items.Add(m.getId());
+            //}
+            //set up grid view
+            dgdMonths.RowCount = rows;
+            dgdMonths.ColumnCount = cols;
+            //set up rows
+            for (int i = 0; i < rows; i++) {
+                dgdMonths.Rows[i].HeaderCell.Value = " Month " + Convert.ToString(i + 1);
+                
             }
+            //set the width so the text fits
+            dgdMonths.RowHeadersWidth = 100;
+            //set up row textvalues
+            dgdMonths.Columns[0].HeaderText = "ID";
+            dgdMonths.Columns[1].HeaderText = "Maximum Temperature";
+            dgdMonths.Columns[2].HeaderText = "Minimum Temperature";
+            dgdMonths.Columns[3].HeaderText = "Days with air frost";
+            dgdMonths.Columns[4].HeaderText = "(mm) of rainfall";
+            dgdMonths.Columns[5].HeaderText = "Sunshine(hrs)";
+            dgdMonths.AutoResizeRows();
+
 
         }
         private void showMonthData()
@@ -306,9 +325,7 @@ namespace WeatherStation
         }
         private void clearAllData()
         {
-            lstLocData.Items.Clear();
             lstYears.Items.Clear();
-            lstYearData.Items.Clear();
             lstMonths.Items.Clear();
             lstMonthData.Items.Clear();
 
