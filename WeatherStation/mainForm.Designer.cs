@@ -31,8 +31,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lstLocations = new System.Windows.Forms.ListBox();
             this.lstYears = new System.Windows.Forms.ListBox();
-            this.lstMonths = new System.Windows.Forms.ListBox();
-            this.lstMonthData = new System.Windows.Forms.ListBox();
             this.boxLocaData = new System.Windows.Forms.GroupBox();
             this.lblCounty = new System.Windows.Forms.Label();
             this.lblLongitude = new System.Windows.Forms.Label();
@@ -56,9 +54,12 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.dgdMonths = new System.Windows.Forms.DataGridView();
+            this.boxMonth = new System.Windows.Forms.GroupBox();
+            this.btnEditMonth = new System.Windows.Forms.Button();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
+            this.boxMonth.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -68,38 +69,21 @@
             // lstLocations
             // 
             this.lstLocations.FormattingEnabled = true;
-            this.lstLocations.Location = new System.Drawing.Point(72, 54);
+            this.lstLocations.Location = new System.Drawing.Point(72, 25);
             this.lstLocations.Margin = new System.Windows.Forms.Padding(2);
             this.lstLocations.Name = "lstLocations";
-            this.lstLocations.Size = new System.Drawing.Size(354, 264);
+            this.lstLocations.Size = new System.Drawing.Size(354, 342);
             this.lstLocations.TabIndex = 1;
             this.lstLocations.SelectedIndexChanged += new System.EventHandler(this.lstLocations_SelectedIndexChanged);
             // 
             // lstYears
             // 
             this.lstYears.FormattingEnabled = true;
-            this.lstYears.Location = new System.Drawing.Point(460, 54);
+            this.lstYears.Location = new System.Drawing.Point(460, 25);
             this.lstYears.Name = "lstYears";
-            this.lstYears.Size = new System.Drawing.Size(248, 264);
+            this.lstYears.Size = new System.Drawing.Size(248, 342);
             this.lstYears.TabIndex = 2;
             this.lstYears.SelectedIndexChanged += new System.EventHandler(this.lstYears_SelectedIndexChanged);
-            // 
-            // lstMonths
-            // 
-            this.lstMonths.FormattingEnabled = true;
-            this.lstMonths.Location = new System.Drawing.Point(874, 426);
-            this.lstMonths.Name = "lstMonths";
-            this.lstMonths.Size = new System.Drawing.Size(192, 147);
-            this.lstMonths.TabIndex = 3;
-            this.lstMonths.SelectedIndexChanged += new System.EventHandler(this.lstMonths_SelectedIndexChanged);
-            // 
-            // lstMonthData
-            // 
-            this.lstMonthData.FormattingEnabled = true;
-            this.lstMonthData.Location = new System.Drawing.Point(1169, 422);
-            this.lstMonthData.Name = "lstMonthData";
-            this.lstMonthData.Size = new System.Drawing.Size(192, 173);
-            this.lstMonthData.TabIndex = 6;
             // 
             // boxLocaData
             // 
@@ -117,7 +101,7 @@
             this.boxLocaData.Controls.Add(this.txtCounty);
             this.boxLocaData.Controls.Add(this.txtstreetNumAndName);
             this.boxLocaData.Controls.Add(this.txtLocName);
-            this.boxLocaData.Location = new System.Drawing.Point(72, 360);
+            this.boxLocaData.Location = new System.Drawing.Point(72, 398);
             this.boxLocaData.Name = "boxLocaData";
             this.boxLocaData.Size = new System.Drawing.Size(354, 313);
             this.boxLocaData.TabIndex = 7;
@@ -248,7 +232,7 @@
             this.boxYearData.Controls.Add(this.btnAddYear);
             this.boxYearData.Controls.Add(this.txtDescription);
             this.boxYearData.Controls.Add(this.txtYear);
-            this.boxYearData.Location = new System.Drawing.Point(479, 360);
+            this.boxYearData.Location = new System.Drawing.Point(460, 398);
             this.boxYearData.Name = "boxYearData";
             this.boxYearData.Size = new System.Drawing.Size(354, 313);
             this.boxYearData.TabIndex = 28;
@@ -310,21 +294,40 @@
             // dgdMonths
             // 
             this.dgdMonths.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgdMonths.Location = new System.Drawing.Point(738, 12);
+            this.dgdMonths.Location = new System.Drawing.Point(719, 25);
             this.dgdMonths.Name = "dgdMonths";
-            this.dgdMonths.Size = new System.Drawing.Size(823, 357);
+            this.dgdMonths.Size = new System.Drawing.Size(823, 344);
             this.dgdMonths.TabIndex = 29;
+            // 
+            // boxMonth
+            // 
+            this.boxMonth.Controls.Add(this.btnEditMonth);
+            this.boxMonth.Location = new System.Drawing.Point(852, 398);
+            this.boxMonth.Name = "boxMonth";
+            this.boxMonth.Size = new System.Drawing.Size(354, 313);
+            this.boxMonth.TabIndex = 30;
+            this.boxMonth.TabStop = false;
+            this.boxMonth.Text = "Month Controls";
+            // 
+            // btnEditMonth
+            // 
+            this.btnEditMonth.Location = new System.Drawing.Point(33, 54);
+            this.btnEditMonth.Name = "btnEditMonth";
+            this.btnEditMonth.Size = new System.Drawing.Size(106, 40);
+            this.btnEditMonth.TabIndex = 7;
+            this.btnEditMonth.Text = "Edit";
+            this.btnEditMonth.UseVisualStyleBackColor = true;
+            this.btnEditMonth.Click += new System.EventHandler(this.btnEditMonth_Click);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 673);
+            this.ClientSize = new System.Drawing.Size(1573, 876);
+            this.Controls.Add(this.boxMonth);
             this.Controls.Add(this.dgdMonths);
             this.Controls.Add(this.boxYearData);
             this.Controls.Add(this.boxLocaData);
-            this.Controls.Add(this.lstMonthData);
-            this.Controls.Add(this.lstMonths);
             this.Controls.Add(this.lstYears);
             this.Controls.Add(this.lstLocations);
             this.Name = "mainForm";
@@ -334,6 +337,7 @@
             this.boxYearData.ResumeLayout(false);
             this.boxYearData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).EndInit();
+            this.boxMonth.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -342,8 +346,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListBox lstLocations;
         private System.Windows.Forms.ListBox lstYears;
-        private System.Windows.Forms.ListBox lstMonths;
-        private System.Windows.Forms.ListBox lstMonthData;
         private System.Windows.Forms.GroupBox boxLocaData;
         private System.Windows.Forms.TextBox txtLongitude;
         private System.Windows.Forms.TextBox txtPostCode;
@@ -367,6 +369,8 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.DataGridView dgdMonths;
+        private System.Windows.Forms.GroupBox boxMonth;
+        private System.Windows.Forms.Button btnEditMonth;
     }
 }
 

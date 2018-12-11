@@ -152,11 +152,11 @@ namespace WeatherStation
             showMonths();
         }
         int monthSelected = -1;
-        private void lstMonths_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            monthSelected = lstMonths.SelectedIndex;
-            showMonthData();
-        }
+        //private void lstMonths_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    monthSelected = lstMonths.SelectedIndex;
+        //    showMonthData();
+        //}
         /// <summary>
         /// the location routines
         /// </summary>
@@ -298,6 +298,7 @@ namespace WeatherStation
             }
             //set the width so the text fits
             dgdMonths.RowHeadersWidth = 100;
+
             //set up row textvalues
             dgdMonths.Columns[0].HeaderText = "ID";
             dgdMonths.Columns[1].HeaderText = "Maximum Temperature";
@@ -305,29 +306,37 @@ namespace WeatherStation
             dgdMonths.Columns[3].HeaderText = "Days with air frost";
             dgdMonths.Columns[4].HeaderText = "(mm) of rainfall";
             dgdMonths.Columns[5].HeaderText = "Sunshine(hrs)";
-            dgdMonths.AutoResizeRows();
 
+            //show the data
+            showMonthData(rows,cols);
 
         }
-        private void showMonthData()
+        private void showMonthData(int rows, int cols)
         {
-            lstMonthData.Items.Clear();
+
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Monthly[] theMonths = theYearData[yearSelected].getMonths();
-            Monthly month = theMonths[monthSelected];
-            lstMonthData.Items.Add(month.getId());
-            lstMonthData.Items.Add(month.getMaxTemp());
-            lstMonthData.Items.Add(month.getMinTemp());
-            lstMonthData.Items.Add(month.getNumDaysAirFrost());
-            lstMonthData.Items.Add(month.getMmRainfall());
-            lstMonthData.Items.Add(month.getHoursSunshine());
+            for (int i = 0; i < rows; i++)
+            {
+                    Monthly month = theMonths[i];
+                    dgdMonths[0, i].Value = month.getId();
+                    dgdMonths[1, i].Value = month.getMaxTemp();
+                    dgdMonths[2, i].Value = month.getMinTemp();
+                    dgdMonths[3, i].Value = month.getNumDaysAirFrost();
+                    dgdMonths[4, i].Value = month.getMmRainfall();
+                    dgdMonths[5, i].Value = month.getHoursSunshine();
+
+            }
+
+        }
+        private void btnEditMonth_Click(object sender, EventArgs e)
+        {
 
         }
         private void clearAllData()
         {
             lstYears.Items.Clear();
-            lstMonths.Items.Clear();
-            lstMonthData.Items.Clear();
+
 
         }
 
