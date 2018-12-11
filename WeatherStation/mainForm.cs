@@ -331,7 +331,20 @@ namespace WeatherStation
         }
         private void btnEditMonth_Click(object sender, EventArgs e)
         {
+            const int rows = 12;
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            for (int i = 0; i < rows; i++)
+            {
+                Monthly month = theMonths[i];
+                month.setId(dgdMonths[0, i].Value.ToString());
+                month.setMaxTemp(Convert.ToDouble(dgdMonths[1, i].Value));
+                month.setMinTemp(Convert.ToDouble(dgdMonths[2, i].Value));
+                month.setNumDaysAirFrost(Convert.ToDouble(dgdMonths[3, i].Value));
+                month.setMmRainfall(Convert.ToDouble(dgdMonths[4, i].Value));
+                month.setHoursSunshine(Convert.ToDouble(dgdMonths[5, i].Value));
 
+            }
         }
         private void clearAllData()
         {
