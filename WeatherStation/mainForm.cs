@@ -270,6 +270,33 @@ namespace WeatherStation
             refreshLocation();
 
         }
+        private void btnLocSearch_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txtLocSearch.Text;
+            foreach (Location l in Data.WeatherStationData)
+            {
+               if(searchQuery == l.getLocationName())
+                {
+
+                }
+            }
+            int length = Data.WeatherStationData.Length;
+            bool found = false;
+            for (int i = 0; i < length; i++)
+            {
+                if (searchQuery == Data.WeatherStationData[i].getLocationName())
+                {
+                    lstLocations.SelectedIndex = i;
+                    found = true;
+
+                }
+            }
+            if(found == false)
+            {
+                lblLocationSearchResponse.Text = "Location not found";
+            }
+
+        }
         private void refreshLocation()
         {
             lstLocations.Items.Clear();
@@ -462,7 +489,6 @@ namespace WeatherStation
         {
             saveToFile();
         }
-
 
     }
 }

@@ -32,6 +32,9 @@
             this.lstLocations = new System.Windows.Forms.ListBox();
             this.lstYears = new System.Windows.Forms.ListBox();
             this.boxLocaData = new System.Windows.Forms.GroupBox();
+            this.lblLocationSearchResponse = new System.Windows.Forms.Label();
+            this.btnLocSearch = new System.Windows.Forms.Button();
+            this.txtLocSearch = new System.Windows.Forms.TextBox();
             this.lblCounty = new System.Windows.Forms.Label();
             this.lblLongitude = new System.Windows.Forms.Label();
             this.lblLatitude = new System.Windows.Forms.Label();
@@ -94,6 +97,9 @@
             // 
             // boxLocaData
             // 
+            this.boxLocaData.Controls.Add(this.lblLocationSearchResponse);
+            this.boxLocaData.Controls.Add(this.btnLocSearch);
+            this.boxLocaData.Controls.Add(this.txtLocSearch);
             this.boxLocaData.Controls.Add(this.lblCounty);
             this.boxLocaData.Controls.Add(this.lblLongitude);
             this.boxLocaData.Controls.Add(this.lblLatitude);
@@ -110,10 +116,35 @@
             this.boxLocaData.Controls.Add(this.txtLocName);
             this.boxLocaData.Location = new System.Drawing.Point(72, 398);
             this.boxLocaData.Name = "boxLocaData";
-            this.boxLocaData.Size = new System.Drawing.Size(354, 313);
+            this.boxLocaData.Size = new System.Drawing.Size(354, 397);
             this.boxLocaData.TabIndex = 7;
             this.boxLocaData.TabStop = false;
             this.boxLocaData.Text = "Location data";
+            // 
+            // lblLocationSearchResponse
+            // 
+            this.lblLocationSearchResponse.AutoSize = true;
+            this.lblLocationSearchResponse.Location = new System.Drawing.Point(119, 369);
+            this.lblLocationSearchResponse.Name = "lblLocationSearchResponse";
+            this.lblLocationSearchResponse.Size = new System.Drawing.Size(0, 13);
+            this.lblLocationSearchResponse.TabIndex = 16;
+            // 
+            // btnLocSearch
+            // 
+            this.btnLocSearch.Location = new System.Drawing.Point(215, 337);
+            this.btnLocSearch.Name = "btnLocSearch";
+            this.btnLocSearch.Size = new System.Drawing.Size(106, 29);
+            this.btnLocSearch.TabIndex = 15;
+            this.btnLocSearch.Text = "Search Location";
+            this.btnLocSearch.UseVisualStyleBackColor = true;
+            this.btnLocSearch.Click += new System.EventHandler(this.btnLocSearch_Click);
+            // 
+            // txtLocSearch
+            // 
+            this.txtLocSearch.Location = new System.Drawing.Point(30, 346);
+            this.txtLocSearch.Name = "txtLocSearch";
+            this.txtLocSearch.Size = new System.Drawing.Size(154, 20);
+            this.txtLocSearch.TabIndex = 14;
             // 
             // lblCounty
             // 
@@ -240,7 +271,7 @@
             this.boxYearData.Controls.Add(this.txtYear);
             this.boxYearData.Location = new System.Drawing.Point(460, 398);
             this.boxYearData.Name = "boxYearData";
-            this.boxYearData.Size = new System.Drawing.Size(354, 313);
+            this.boxYearData.Size = new System.Drawing.Size(354, 397);
             this.boxYearData.TabIndex = 28;
             this.boxYearData.TabStop = false;
             this.boxYearData.Text = "Year data";
@@ -375,7 +406,7 @@
             // 
             // btnSaveChnages
             // 
-            this.btnSaveChnages.Location = new System.Drawing.Point(586, 768);
+            this.btnSaveChnages.Location = new System.Drawing.Point(579, 824);
             this.btnSaveChnages.Name = "btnSaveChnages";
             this.btnSaveChnages.Size = new System.Drawing.Size(106, 40);
             this.btnSaveChnages.TabIndex = 31;
@@ -444,6 +475,9 @@
         private System.Windows.Forms.Label lblSetYear;
         private System.Windows.Forms.TextBox txtSetNewYear;
         private System.Windows.Forms.GroupBox boxNewYearandMonth;
+        private System.Windows.Forms.Button btnLocSearch;
+        private System.Windows.Forms.TextBox txtLocSearch;
+        private System.Windows.Forms.Label lblLocationSearchResponse;
     }
 }
 
