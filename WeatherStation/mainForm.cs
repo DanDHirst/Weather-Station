@@ -312,30 +312,82 @@ namespace WeatherStation
         }
         private void btnAddNewYear_Click(object sender, EventArgs e)
         {
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            int theYear;
+            string Description;
+            theYear = Convert.ToInt32(txtSetNewYear.Text);
+            Description = txtSetYearDescription.Text;
+            //set a blank monthly datagrid
+            CreateBlankGrid();
+            //set up loop to store all the blank months in an array
+            Monthly[] tempBlankMonths= null;
+            const int amountOfMonths = 12;
+            for (int i = 0; i < amountOfMonths; i++)
+            {
+                string id;
+                double maxTemp, minTemp, airFrost, rainfall, sunshine;
+                //assign varaibles to 0 to create blank data
+                id = ((i+1).ToString());
+                maxTemp = 0;
+                minTemp = 0;
+                airFrost = 0;
+                rainfall = 0;
+                sunshine = 0;
+
+
+
+
+
+                //create object
+                Monthly tempBlankMonth = new Monthly(id, maxTemp, minTemp, airFrost, rainfall, sunshine);
+                //size the array
+                int sizeofMonth;
+                if (tempBlankMonths == null)
+                {
+                    sizeofMonth = 0;
+                }
+                else
+                {
+                    sizeofMonth = tempBlankMonths.Length;
+                }
+                Array.Resize(ref tempBlankMonths, sizeofMonth + 1);
+                tempBlankMonths[sizeofMonth] = tempBlankMonth;
+            }
+            //create object
+            Yearly tempYear = new Yearly(theYear,Description,tempBlankMonths);
+
+            Yearly [] tempLocation = Data.WeatherStationData[locationSelected].getYears();
+            //resize the array
+            int size;
+            if (tempLocation == null)
+            {
+                size = 0;
+            }
+            else
+            {
+                size = tempLocation.Length;
+            }
+            Array.Resize(ref tempLocation, size + 1);
+            tempLocation[size] = tempYear;
+            Data.WeatherStationData[locationSelected].setYears(tempLocation);
+            //to refresh the list so the changes that are made show up
+            showYears();
+
+
 
         }
-
-        /// <summary>
-        /// All of the month routines
-        /// </summary>
-        private void showMonths()
+        private void CreateBlankGrid()
         {
             const int rows = 12;
             const int cols = 6;
-            //lstMonths.Items.Clear();
-            //Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
-            //Monthly[] theMonths = theYearData[yearSelected].getMonths();
-            //foreach(Monthly m in theMonths)
-            //{
-            //    lstMonths.Items.Add(m.getId());
-            //}
             //set up grid view
             dgdMonths.RowCount = rows;
             dgdMonths.ColumnCount = cols;
             //set up rows
-            for (int i = 0; i < rows; i++) {
+            for (int i = 0; i < rows; i++)
+            {
                 dgdMonths.Rows[i].HeaderCell.Value = " Month " + Convert.ToString(i + 1);
-                
+
             }
             //set the width so the text fits
             dgdMonths.RowHeadersWidth = 100;
@@ -347,6 +399,16 @@ namespace WeatherStation
             dgdMonths.Columns[3].HeaderText = "Days with air frost";
             dgdMonths.Columns[4].HeaderText = "(mm) of rainfall";
             dgdMonths.Columns[5].HeaderText = "Sunshine(hrs)";
+        }
+
+        /// <summary>
+        /// All of the month routines
+        /// </summary>
+        private void showMonths()
+        {
+            CreateBlankGrid();
+            const int rows = 12;
+            const int cols = 6;
 
             //show the data
             showMonthData(rows,cols);
