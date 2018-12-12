@@ -273,13 +273,6 @@ namespace WeatherStation
         private void btnLocSearch_Click(object sender, EventArgs e)
         {
             string searchQuery = txtLocSearch.Text;
-            foreach (Location l in Data.WeatherStationData)
-            {
-               if(searchQuery == l.getLocationName())
-                {
-
-                }
-            }
             int length = Data.WeatherStationData.Length;
             bool found = false;
             for (int i = 0; i < length; i++)
@@ -337,6 +330,7 @@ namespace WeatherStation
 
 
         }
+
         private void btnAddNewYear_Click(object sender, EventArgs e)
         {
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
@@ -402,6 +396,30 @@ namespace WeatherStation
 
 
 
+        }
+        /// <summary>
+        /// loops sequentially through the years comapring it to the user input
+        /// </summary>
+
+        private void btnSearchYearData_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txtSearchYear.Text;
+            int length = Data.WeatherStationData[locationSelected].getYears().Length;
+            bool found = false;
+            Yearly[] years = Data.WeatherStationData[locationSelected].getYears();
+            for (int i = 0; i < length; i++)
+            {
+                if (searchQuery == years[i].getYear().ToString())
+                {
+                    lstYears.SelectedIndex = i;
+                    found = true;
+
+                }
+            }
+            if (found == false)
+            {
+                lblSearchYearResponse.Text = "Year not found";
+            }
         }
         private void CreateBlankGrid()
         {
@@ -490,5 +508,6 @@ namespace WeatherStation
             saveToFile();
         }
 
+        
     }
 }

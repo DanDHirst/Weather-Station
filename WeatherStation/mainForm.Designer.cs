@@ -65,6 +65,9 @@
             this.txtSetNewYear = new System.Windows.Forms.TextBox();
             this.btnEditMonth = new System.Windows.Forms.Button();
             this.btnSaveChnages = new System.Windows.Forms.Button();
+            this.lblSearchYearResponse = new System.Windows.Forms.Label();
+            this.btnSearchYearData = new System.Windows.Forms.Button();
+            this.txtSearchYear = new System.Windows.Forms.TextBox();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
@@ -264,8 +267,11 @@
             // 
             // boxYearData
             // 
+            this.boxYearData.Controls.Add(this.lblSearchYearResponse);
             this.boxYearData.Controls.Add(this.label11);
+            this.boxYearData.Controls.Add(this.btnSearchYearData);
             this.boxYearData.Controls.Add(this.lblYear);
+            this.boxYearData.Controls.Add(this.txtSearchYear);
             this.boxYearData.Controls.Add(this.btnEditYear);
             this.boxYearData.Controls.Add(this.txtDescription);
             this.boxYearData.Controls.Add(this.txtYear);
@@ -414,6 +420,31 @@
             this.btnSaveChnages.UseVisualStyleBackColor = true;
             this.btnSaveChnages.Click += new System.EventHandler(this.btnSaveChnages_Click);
             // 
+            // lblSearchYearResponse
+            // 
+            this.lblSearchYearResponse.AutoSize = true;
+            this.lblSearchYearResponse.Location = new System.Drawing.Point(119, 244);
+            this.lblSearchYearResponse.Name = "lblSearchYearResponse";
+            this.lblSearchYearResponse.Size = new System.Drawing.Size(0, 13);
+            this.lblSearchYearResponse.TabIndex = 19;
+            // 
+            // btnSearchYearData
+            // 
+            this.btnSearchYearData.Location = new System.Drawing.Point(215, 212);
+            this.btnSearchYearData.Name = "btnSearchYearData";
+            this.btnSearchYearData.Size = new System.Drawing.Size(106, 29);
+            this.btnSearchYearData.TabIndex = 18;
+            this.btnSearchYearData.Text = "Search Year";
+            this.btnSearchYearData.UseVisualStyleBackColor = true;
+            this.btnSearchYearData.Click += new System.EventHandler(this.btnSearchYearData_Click);
+            // 
+            // txtSearchYear
+            // 
+            this.txtSearchYear.Location = new System.Drawing.Point(30, 221);
+            this.txtSearchYear.Name = "txtSearchYear";
+            this.txtSearchYear.Size = new System.Drawing.Size(154, 20);
+            this.txtSearchYear.TabIndex = 17;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +509,9 @@
         private System.Windows.Forms.Button btnLocSearch;
         private System.Windows.Forms.TextBox txtLocSearch;
         private System.Windows.Forms.Label lblLocationSearchResponse;
+        private System.Windows.Forms.Label lblSearchYearResponse;
+        private System.Windows.Forms.Button btnSearchYearData;
+        private System.Windows.Forms.TextBox txtSearchYear;
     }
 }
 
