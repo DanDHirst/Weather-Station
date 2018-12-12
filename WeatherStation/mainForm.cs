@@ -20,6 +20,53 @@ namespace WeatherStation
             getLocation();
             showLocation();
         }
+        private void saveToFile()
+        {
+            //save the location data first
+            string filename;
+            openFileDialog1.ShowDialog();
+            filename = openFileDialog1.FileName;
+            StreamWriter theData = new StreamWriter(filename);
+            theData.WriteLine(Data.WeatherStationData.Length);
+            foreach (Location locationData in Data.WeatherStationData)
+            {
+                theData.WriteLine(locationData.getLocationName());
+                theData.WriteLine(locationData.getStreetNumAndName());
+                theData.WriteLine(locationData.getCounty());
+                theData.WriteLine(locationData.getPostCode());
+                theData.WriteLine(locationData.getLatitude());
+                theData.WriteLine(locationData.getLongitude());
+                saveYears(theData, locationData);
+
+
+
+            }
+            theData.Close();
+
+        }
+        private void saveYears(StreamWriter theData,  Location locationData)
+        {
+            theData.WriteLine(locationData.getYears().Length); // save number of years in data set
+            foreach (Yearly yearData in locationData.getYears())
+            {
+                theData.WriteLine(yearData.getDescription());
+                saveMonths(theData, yearData);
+            }
+        }
+        private void saveMonths(StreamWriter theData, Yearly yearData)
+        {
+            foreach(Monthly monthData in yearData.getMonths())
+            {
+                theData.WriteLine(yearData.getYear()); // save the year as it repeats in every month
+                theData.WriteLine(monthData.getId());
+                theData.WriteLine(monthData.getMaxTemp());
+                theData.WriteLine(monthData.getMinTemp());
+                theData.WriteLine(monthData.getMmRainfall());
+                theData.WriteLine(monthData.getNumDaysAirFrost());
+                theData.WriteLine(monthData.getHoursSunshine());
+            }
+
+        }
         //data read in section
         private void getLocation()
         {
@@ -64,6 +111,8 @@ namespace WeatherStation
                 
 
             }
+            TheData.Close();
+            
 
         }
         private void getYear(StreamReader theData, ref Yearly[] allYears)
@@ -196,6 +245,7 @@ namespace WeatherStation
             theLocation.setLongitude(txtLongitude.Text);
             // to refresh the list so the changes that are made show up
             refreshLocation();
+            saveToFile();
 
         }
 
@@ -265,6 +315,7 @@ namespace WeatherStation
             // to refresh the list so the changes that are made show up
             lstYears.Items.Clear();
             showYears();
+            saveToFile();
 
         }
 
@@ -352,6 +403,7 @@ namespace WeatherStation
 
 
         }
+        
 
 
     }
