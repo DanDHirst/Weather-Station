@@ -494,6 +494,27 @@ namespace WeatherStation
 
             }
         }
+        private void btnSearchMonth_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txtSearchMonth.Text;
+            Yearly[] theyear = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theyear[yearSelected].getMonths();
+            const int length = 12; //due to 12 months in a year
+            bool found = false;
+            for (int i = 0; i < length; i++)
+            {
+                if (theMonths[i].getId() == searchQuery)
+                {
+                    dgdMonths.Rows[i].Selected = true;
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                lblSearchMonth.Text = "Month id not found";
+            }
+
+        }
         private void clearAllData()
         {
             lstYears.Items.Clear();
