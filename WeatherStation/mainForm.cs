@@ -245,7 +245,6 @@ namespace WeatherStation
             theLocation.setLongitude(txtLongitude.Text);
             // to refresh the list so the changes that are made show up
             refreshLocation();
-            saveToFile();
 
         }
 
@@ -310,12 +309,11 @@ namespace WeatherStation
         {
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Yearly yearData = theYearData[yearSelected];
-            yearData.setYear(Convert.ToInt32(txtYear.Text));
             yearData.setDescription(txtDescription.Text);
             // to refresh the list so the changes that are made show up
             lstYears.Items.Clear();
             showYears();
-            saveToFile();
+
 
         }
 
@@ -400,11 +398,15 @@ namespace WeatherStation
         private void clearAllData()
         {
             lstYears.Items.Clear();
+            dgdMonths.Rows.Clear();
+            dgdMonths.Refresh();
 
 
         }
-        
 
-
+        private void btnSaveChnages_Click(object sender, EventArgs e)
+        {
+            saveToFile();
+        }
     }
 }

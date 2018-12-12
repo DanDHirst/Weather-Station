@@ -56,6 +56,7 @@
             this.dgdMonths = new System.Windows.Forms.DataGridView();
             this.boxMonth = new System.Windows.Forms.GroupBox();
             this.btnEditMonth = new System.Windows.Forms.Button();
+            this.btnSaveChnages = new System.Windows.Forms.Button();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
@@ -288,6 +289,7 @@
             // 
             this.txtYear.Location = new System.Drawing.Point(146, 38);
             this.txtYear.Name = "txtYear";
+            this.txtYear.ReadOnly = true;
             this.txtYear.Size = new System.Drawing.Size(188, 20);
             this.txtYear.TabIndex = 0;
             // 
@@ -319,11 +321,22 @@
             this.btnEditMonth.UseVisualStyleBackColor = true;
             this.btnEditMonth.Click += new System.EventHandler(this.btnEditMonth_Click);
             // 
+            // btnSaveChnages
+            // 
+            this.btnSaveChnages.Location = new System.Drawing.Point(586, 768);
+            this.btnSaveChnages.Name = "btnSaveChnages";
+            this.btnSaveChnages.Size = new System.Drawing.Size(106, 40);
+            this.btnSaveChnages.TabIndex = 31;
+            this.btnSaveChnages.Text = "Save Changes";
+            this.btnSaveChnages.UseVisualStyleBackColor = true;
+            this.btnSaveChnages.Click += new System.EventHandler(this.btnSaveChnages_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1573, 876);
+            this.Controls.Add(this.btnSaveChnages);
             this.Controls.Add(this.boxMonth);
             this.Controls.Add(this.dgdMonths);
             this.Controls.Add(this.boxYearData);
@@ -371,6 +384,7 @@
         private System.Windows.Forms.DataGridView dgdMonths;
         private System.Windows.Forms.GroupBox boxMonth;
         private System.Windows.Forms.Button btnEditMonth;
+        private System.Windows.Forms.Button btnSaveChnages;
     }
 }
 
