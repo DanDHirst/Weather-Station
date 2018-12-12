@@ -183,7 +183,7 @@ namespace WeatherStation
 
 
 
-
+        //location selectors
         int locationSelected = -1;
         private void lstLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -200,12 +200,6 @@ namespace WeatherStation
             showYearData();
             showMonths();
         }
-        int monthSelected = -1;
-        //private void lstMonths_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    monthSelected = lstMonths.SelectedIndex;
-        //    showMonthData();
-        //}
         /// <summary>
         /// the location routines
         /// </summary>
@@ -316,13 +310,11 @@ namespace WeatherStation
 
 
         }
-
-        private void btnAddYear_Click(object sender, EventArgs e)
+        private void btnAddNewYear_Click(object sender, EventArgs e)
         {
-            
-           
 
         }
+
         /// <summary>
         /// All of the month routines
         /// </summary>
@@ -408,5 +400,7 @@ namespace WeatherStation
         {
             saveToFile();
         }
+
+
     }
 }

@@ -50,17 +50,23 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
             this.btnEditYear = new System.Windows.Forms.Button();
-            this.btnAddYear = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtYear = new System.Windows.Forms.TextBox();
+            this.btnAddNewYear = new System.Windows.Forms.Button();
             this.dgdMonths = new System.Windows.Forms.DataGridView();
             this.boxMonth = new System.Windows.Forms.GroupBox();
+            this.boxNewYearandMonth = new System.Windows.Forms.GroupBox();
+            this.lblSetNewDescription = new System.Windows.Forms.Label();
+            this.txtSetYearDescription = new System.Windows.Forms.TextBox();
+            this.lblSetYear = new System.Windows.Forms.Label();
+            this.txtSetNewYear = new System.Windows.Forms.TextBox();
             this.btnEditMonth = new System.Windows.Forms.Button();
             this.btnSaveChnages = new System.Windows.Forms.Button();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
             this.boxMonth.SuspendLayout();
+            this.boxNewYearandMonth.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -112,7 +118,7 @@
             // lblCounty
             // 
             this.lblCounty.AutoSize = true;
-            this.lblCounty.Location = new System.Drawing.Point(39, 121);
+            this.lblCounty.Location = new System.Drawing.Point(13, 117);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(40, 13);
             this.lblCounty.TabIndex = 13;
@@ -121,7 +127,7 @@
             // lblLongitude
             // 
             this.lblLongitude.AutoSize = true;
-            this.lblLongitude.Location = new System.Drawing.Point(39, 233);
+            this.lblLongitude.Location = new System.Drawing.Point(11, 233);
             this.lblLongitude.Name = "lblLongitude";
             this.lblLongitude.Size = new System.Drawing.Size(54, 13);
             this.lblLongitude.TabIndex = 12;
@@ -130,7 +136,7 @@
             // lblLatitude
             // 
             this.lblLatitude.AutoSize = true;
-            this.lblLatitude.Location = new System.Drawing.Point(39, 196);
+            this.lblLatitude.Location = new System.Drawing.Point(13, 196);
             this.lblLatitude.Name = "lblLatitude";
             this.lblLatitude.Size = new System.Drawing.Size(45, 13);
             this.lblLatitude.TabIndex = 11;
@@ -139,7 +145,7 @@
             // lblPostCode
             // 
             this.lblPostCode.AutoSize = true;
-            this.lblPostCode.Location = new System.Drawing.Point(39, 159);
+            this.lblPostCode.Location = new System.Drawing.Point(13, 158);
             this.lblPostCode.Name = "lblPostCode";
             this.lblPostCode.Size = new System.Drawing.Size(52, 13);
             this.lblPostCode.TabIndex = 10;
@@ -157,7 +163,7 @@
             // lblLocName
             // 
             this.lblLocName.AutoSize = true;
-            this.lblLocName.Location = new System.Drawing.Point(38, 38);
+            this.lblLocName.Location = new System.Drawing.Point(13, 38);
             this.lblLocName.Name = "lblLocName";
             this.lblLocName.Size = new System.Drawing.Size(79, 13);
             this.lblLocName.TabIndex = 8;
@@ -230,7 +236,6 @@
             this.boxYearData.Controls.Add(this.label11);
             this.boxYearData.Controls.Add(this.lblYear);
             this.boxYearData.Controls.Add(this.btnEditYear);
-            this.boxYearData.Controls.Add(this.btnAddYear);
             this.boxYearData.Controls.Add(this.txtDescription);
             this.boxYearData.Controls.Add(this.txtYear);
             this.boxYearData.Location = new System.Drawing.Point(460, 398);
@@ -243,7 +248,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 81);
+            this.label11.Location = new System.Drawing.Point(38, 81);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
             this.label11.TabIndex = 9;
@@ -260,23 +265,13 @@
             // 
             // btnEditYear
             // 
-            this.btnEditYear.Location = new System.Drawing.Point(200, 131);
+            this.btnEditYear.Location = new System.Drawing.Point(146, 136);
             this.btnEditYear.Name = "btnEditYear";
             this.btnEditYear.Size = new System.Drawing.Size(106, 40);
             this.btnEditYear.TabIndex = 7;
             this.btnEditYear.Text = "Edit";
             this.btnEditYear.UseVisualStyleBackColor = true;
             this.btnEditYear.Click += new System.EventHandler(this.btnEditYear_Click);
-            // 
-            // btnAddYear
-            // 
-            this.btnAddYear.Location = new System.Drawing.Point(52, 131);
-            this.btnAddYear.Name = "btnAddYear";
-            this.btnAddYear.Size = new System.Drawing.Size(92, 41);
-            this.btnAddYear.TabIndex = 6;
-            this.btnAddYear.Text = "Add";
-            this.btnAddYear.UseVisualStyleBackColor = true;
-            this.btnAddYear.Click += new System.EventHandler(this.btnAddYear_Click);
             // 
             // txtDescription
             // 
@@ -293,6 +288,16 @@
             this.txtYear.Size = new System.Drawing.Size(188, 20);
             this.txtYear.TabIndex = 0;
             // 
+            // btnAddNewYear
+            // 
+            this.btnAddNewYear.Location = new System.Drawing.Point(107, 125);
+            this.btnAddNewYear.Name = "btnAddNewYear";
+            this.btnAddNewYear.Size = new System.Drawing.Size(92, 41);
+            this.btnAddNewYear.TabIndex = 6;
+            this.btnAddNewYear.Text = "Add";
+            this.btnAddNewYear.UseVisualStyleBackColor = true;
+            this.btnAddNewYear.Click += new System.EventHandler(this.btnAddNewYear_Click);
+            // 
             // dgdMonths
             // 
             this.dgdMonths.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -303,6 +308,7 @@
             // 
             // boxMonth
             // 
+            this.boxMonth.Controls.Add(this.boxNewYearandMonth);
             this.boxMonth.Controls.Add(this.btnEditMonth);
             this.boxMonth.Location = new System.Drawing.Point(852, 398);
             this.boxMonth.Name = "boxMonth";
@@ -311,9 +317,55 @@
             this.boxMonth.TabStop = false;
             this.boxMonth.Text = "Month Controls";
             // 
+            // boxNewYearandMonth
+            // 
+            this.boxNewYearandMonth.Controls.Add(this.lblSetNewDescription);
+            this.boxNewYearandMonth.Controls.Add(this.txtSetYearDescription);
+            this.boxNewYearandMonth.Controls.Add(this.lblSetYear);
+            this.boxNewYearandMonth.Controls.Add(this.txtSetNewYear);
+            this.boxNewYearandMonth.Controls.Add(this.btnAddNewYear);
+            this.boxNewYearandMonth.Location = new System.Drawing.Point(6, 20);
+            this.boxNewYearandMonth.Name = "boxNewYearandMonth";
+            this.boxNewYearandMonth.Size = new System.Drawing.Size(342, 189);
+            this.boxNewYearandMonth.TabIndex = 12;
+            this.boxNewYearandMonth.TabStop = false;
+            this.boxNewYearandMonth.Text = "Add new Year";
+            // 
+            // lblSetNewDescription
+            // 
+            this.lblSetNewDescription.AutoSize = true;
+            this.lblSetNewDescription.Location = new System.Drawing.Point(16, 83);
+            this.lblSetNewDescription.Name = "lblSetNewDescription";
+            this.lblSetNewDescription.Size = new System.Drawing.Size(104, 13);
+            this.lblSetNewDescription.TabIndex = 11;
+            this.lblSetNewDescription.Text = "Set New Description";
+            // 
+            // txtSetYearDescription
+            // 
+            this.txtSetYearDescription.Location = new System.Drawing.Point(124, 80);
+            this.txtSetYearDescription.Name = "txtSetYearDescription";
+            this.txtSetYearDescription.Size = new System.Drawing.Size(188, 20);
+            this.txtSetYearDescription.TabIndex = 10;
+            // 
+            // lblSetYear
+            // 
+            this.lblSetYear.AutoSize = true;
+            this.lblSetYear.Location = new System.Drawing.Point(16, 43);
+            this.lblSetYear.Name = "lblSetYear";
+            this.lblSetYear.Size = new System.Drawing.Size(73, 13);
+            this.lblSetYear.TabIndex = 10;
+            this.lblSetYear.Text = "Set New Year";
+            // 
+            // txtSetNewYear
+            // 
+            this.txtSetNewYear.Location = new System.Drawing.Point(124, 43);
+            this.txtSetNewYear.Name = "txtSetNewYear";
+            this.txtSetNewYear.Size = new System.Drawing.Size(188, 20);
+            this.txtSetNewYear.TabIndex = 9;
+            // 
             // btnEditMonth
             // 
-            this.btnEditMonth.Location = new System.Drawing.Point(33, 54);
+            this.btnEditMonth.Location = new System.Drawing.Point(113, 210);
             this.btnEditMonth.Name = "btnEditMonth";
             this.btnEditMonth.Size = new System.Drawing.Size(106, 40);
             this.btnEditMonth.TabIndex = 7;
@@ -351,6 +403,8 @@
             this.boxYearData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).EndInit();
             this.boxMonth.ResumeLayout(false);
+            this.boxNewYearandMonth.ResumeLayout(false);
+            this.boxNewYearandMonth.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -378,13 +432,18 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.Button btnEditYear;
-        private System.Windows.Forms.Button btnAddYear;
+        private System.Windows.Forms.Button btnAddNewYear;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.DataGridView dgdMonths;
         private System.Windows.Forms.GroupBox boxMonth;
         private System.Windows.Forms.Button btnEditMonth;
         private System.Windows.Forms.Button btnSaveChnages;
+        private System.Windows.Forms.Label lblSetNewDescription;
+        private System.Windows.Forms.TextBox txtSetYearDescription;
+        private System.Windows.Forms.Label lblSetYear;
+        private System.Windows.Forms.TextBox txtSetNewYear;
+        private System.Windows.Forms.GroupBox boxNewYearandMonth;
     }
 }
 
