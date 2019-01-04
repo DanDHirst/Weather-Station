@@ -100,6 +100,7 @@
             this.lblMonth6 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblMonthGraph = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
@@ -532,6 +533,7 @@
             this.radHoursSunshine.TabIndex = 4;
             this.radHoursSunshine.Text = "Sunshine(Hours)";
             this.radHoursSunshine.UseVisualStyleBackColor = true;
+            this.radHoursSunshine.CheckedChanged += new System.EventHandler(this.radHoursSunshine_CheckedChanged);
             // 
             // radMMRainfall
             // 
@@ -542,6 +544,7 @@
             this.radMMRainfall.TabIndex = 3;
             this.radMMRainfall.Text = "Rainfall(mm)";
             this.radMMRainfall.UseVisualStyleBackColor = true;
+            this.radMMRainfall.CheckedChanged += new System.EventHandler(this.radMMRainfall_CheckedChanged);
             // 
             // radNumDaysOfAirFrost
             // 
@@ -552,6 +555,7 @@
             this.radNumDaysOfAirFrost.TabIndex = 2;
             this.radNumDaysOfAirFrost.Text = "Number of Days Of Air Frost";
             this.radNumDaysOfAirFrost.UseVisualStyleBackColor = true;
+            this.radNumDaysOfAirFrost.CheckedChanged += new System.EventHandler(this.radNumDaysOfAirFrost_CheckedChanged);
             // 
             // radMinTemp
             // 
@@ -567,18 +571,17 @@
             // radMaxTemp
             // 
             this.radMaxTemp.AutoSize = true;
-            this.radMaxTemp.Checked = true;
             this.radMaxTemp.Location = new System.Drawing.Point(20, 32);
             this.radMaxTemp.Name = "radMaxTemp";
             this.radMaxTemp.Size = new System.Drawing.Size(132, 17);
             this.radMaxTemp.TabIndex = 0;
-            this.radMaxTemp.TabStop = true;
             this.radMaxTemp.Text = "Maximum Temperature";
             this.radMaxTemp.UseVisualStyleBackColor = true;
             this.radMaxTemp.CheckedChanged += new System.EventHandler(this.radMaxTemp_CheckedChanged);
             // 
             // boxGraph
             // 
+            this.boxGraph.Controls.Add(this.lblTitle);
             this.boxGraph.Controls.Add(this.lblKey1);
             this.boxGraph.Controls.Add(this.lblKey5);
             this.boxGraph.Controls.Add(this.lblKey4);
@@ -597,9 +600,9 @@
             this.boxGraph.Controls.Add(this.lblMonth5);
             this.boxGraph.Controls.Add(this.lblMonth7);
             this.boxGraph.Controls.Add(this.lblMonth6);
-            this.boxGraph.Location = new System.Drawing.Point(1266, 409);
+            this.boxGraph.Location = new System.Drawing.Point(1265, 409);
             this.boxGraph.Name = "boxGraph";
-            this.boxGraph.Size = new System.Drawing.Size(535, 414);
+            this.boxGraph.Size = new System.Drawing.Size(536, 414);
             this.boxGraph.TabIndex = 33;
             this.boxGraph.TabStop = false;
             this.boxGraph.Text = "Graph";
@@ -607,7 +610,7 @@
             // lblKey1
             // 
             this.lblKey1.AutoSize = true;
-            this.lblKey1.Location = new System.Drawing.Point(6, 289);
+            this.lblKey1.Location = new System.Drawing.Point(4, 283);
             this.lblKey1.Name = "lblKey1";
             this.lblKey1.Size = new System.Drawing.Size(13, 13);
             this.lblKey1.TabIndex = 15;
@@ -616,7 +619,7 @@
             // lblKey5
             // 
             this.lblKey5.AutoSize = true;
-            this.lblKey5.Location = new System.Drawing.Point(6, 89);
+            this.lblKey5.Location = new System.Drawing.Point(0, 89);
             this.lblKey5.Name = "lblKey5";
             this.lblKey5.Size = new System.Drawing.Size(19, 13);
             this.lblKey5.TabIndex = 17;
@@ -625,7 +628,7 @@
             // lblKey4
             // 
             this.lblKey4.AutoSize = true;
-            this.lblKey4.Location = new System.Drawing.Point(6, 134);
+            this.lblKey4.Location = new System.Drawing.Point(0, 134);
             this.lblKey4.Name = "lblKey4";
             this.lblKey4.Size = new System.Drawing.Size(19, 13);
             this.lblKey4.TabIndex = 16;
@@ -634,7 +637,7 @@
             // lblKey3
             // 
             this.lblKey3.AutoSize = true;
-            this.lblKey3.Location = new System.Drawing.Point(6, 182);
+            this.lblKey3.Location = new System.Drawing.Point(0, 182);
             this.lblKey3.Name = "lblKey3";
             this.lblKey3.Size = new System.Drawing.Size(19, 13);
             this.lblKey3.TabIndex = 15;
@@ -643,7 +646,7 @@
             // lblKey2
             // 
             this.lblKey2.AutoSize = true;
-            this.lblKey2.Location = new System.Drawing.Point(6, 233);
+            this.lblKey2.Location = new System.Drawing.Point(0, 233);
             this.lblKey2.Name = "lblKey2";
             this.lblKey2.Size = new System.Drawing.Size(19, 13);
             this.lblKey2.TabIndex = 14;
@@ -784,6 +787,15 @@
             this.lblMonthGraph.TabIndex = 35;
             this.lblMonthGraph.Text = "Months";
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(182, 16);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(155, 13);
+            this.lblTitle.TabIndex = 36;
+            this.lblTitle.Text = "Maximum Temperature (celsuis)";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -894,6 +906,7 @@
         private System.Windows.Forms.Label lblKey3;
         private System.Windows.Forms.Label lblKey2;
         private System.Windows.Forms.Label lblKey1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
 
