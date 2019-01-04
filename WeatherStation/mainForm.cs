@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
 
 namespace WeatherStation
 {
@@ -552,5 +553,77 @@ namespace WeatherStation
         {
 
         }
+
+        private void radMaxTemp_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int MaxTemp;
+            int spacing = 20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                MaxTemp = Convert.ToInt32(theMonths[i].getMaxTemp() * 10);// amplifly the results by 20 times 
+
+                solidRectangle = new Rectangle(10 + spacing, (300 - MaxTemp), 30, MaxTemp);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush = new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+
+        }
+
+        private void radMinTemp_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int MinTemp;
+            int spacing =20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                MinTemp = Convert.ToInt32(theMonths[i].getMinTemp()*20);// amplifly the results by 20 times 
+                
+                solidRectangle = new Rectangle(10 + spacing, (300-MinTemp), 30, MinTemp);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush= new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+
+        }
+
+        private void panelGraph_Paint(object sender, PaintEventArgs e)
+        {
+            Pen linePen;
+            int penSize;
+            Color myColor = Color.Black;
+            penSize = 4;
+            //create pen with color and thickness
+            linePen = new Pen(myColor, penSize);
+
+            //declare and create a graphcis object for the panel
+            using (Graphics panelGraphics = panelGraph.CreateGraphics())
+            {
+                panelGraphics.DrawLine(linePen, 20, 30, 20, 300);
+                panelGraphics.DrawLine(linePen, 20, 300, 450, 300);
+            }
+            linePen.Dispose();
+        } //end painting
+
+
     }
 }
