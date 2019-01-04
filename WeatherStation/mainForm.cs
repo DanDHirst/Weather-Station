@@ -199,6 +199,9 @@ namespace WeatherStation
             yearSelected = lstYears.SelectedIndex;
             showYearData();
             showMonths();
+            //check then uncheck radio button
+            radMaxTemp.Checked = false;
+            radMaxTemp.Checked = true;
         }
         /// <summary>
         /// the location routines
@@ -548,6 +551,194 @@ namespace WeatherStation
             saveToFile();
         }
 
-        
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radMaxTemp_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            //set up the legend
+            lblKey1.Text = "5";
+            lblKey2.Text = "10";
+            lblKey3.Text = "15";
+            lblKey4.Text = "20";
+            lblKey5.Text = "25";
+            lblTitle.Text = "Maximum Temperature (celsuis)";
+            //end setup
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int MaxTemp;
+            int spacing = 20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                MaxTemp = Convert.ToInt32(theMonths[i].getMaxTemp() * 10);// amplifly the results by 10 times 
+
+                solidRectangle = new Rectangle(10 + spacing, (300 - MaxTemp), 30, MaxTemp);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush = new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+
+        }
+
+        private void radMinTemp_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            //set up the legend
+            lblKey1.Text = "5";
+            lblKey2.Text = "10";
+            lblKey3.Text = "15";
+            lblKey4.Text = "20";
+            lblKey5.Text = "25";
+            lblTitle.Text = "Minimum Temperature (celsuis)";
+            //end setup
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int MinTemp;
+            int spacing =20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                MinTemp = Convert.ToInt32(theMonths[i].getMinTemp()*10);// amplifly the results by 10 times 
+                
+                solidRectangle = new Rectangle(10 + spacing, (300-MinTemp), 30, MinTemp);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush= new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+
+        }
+
+        private void panelGraph_Paint(object sender, PaintEventArgs e)
+        {
+            Pen linePen;
+            int penSize;
+            Color myColor = Color.Black;
+            penSize = 4;
+            //create pen with color and thickness
+            linePen = new Pen(myColor, penSize);
+
+            //declare and create a graphcis object for the panel
+            using (Graphics panelGraphics = panelGraph.CreateGraphics())
+            {
+                panelGraphics.DrawLine(linePen, 20, 30, 20, 300);
+                panelGraphics.DrawLine(linePen, 20, 300, 450, 300);
+            }
+            linePen.Dispose();
+        } //end painting
+
+        private void radNumDaysOfAirFrost_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            //set up the legend
+            lblKey1.Text = "5";
+            lblKey2.Text = "10";
+            lblKey3.Text = "15";
+            lblKey4.Text = "20";
+            lblKey5.Text = "25";
+            lblTitle.Text = "Air Frost(days)";
+            //end setup
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int airFrost;
+            int spacing = 20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                airFrost = Convert.ToInt32(theMonths[i].getNumDaysAirFrost() * 10);// amplifly the results by 10 times 
+
+                solidRectangle = new Rectangle(10 + spacing, (300 - airFrost), 30, airFrost);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush = new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+        }
+
+        private void radMMRainfall_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            //set up the legend
+            lblKey1.Text = "50";
+            lblKey2.Text = "100";
+            lblKey3.Text = "150";
+            lblKey4.Text = "200";
+            lblKey5.Text = "250";
+            lblTitle.Text = "Rainfall(mm)";
+            //end setup
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int rainfall;
+            int spacing = 20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                rainfall = Convert.ToInt32(theMonths[i].getMmRainfall() );// amplifly the results by 5 times 
+
+                solidRectangle = new Rectangle(10 + spacing, (300 - rainfall), 30, rainfall);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush = new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+        }
+
+        private void radHoursSunshine_CheckedChanged(object sender, EventArgs e)
+        {
+            panelGraph.Refresh();
+            //set up the legend
+            lblKey1.Text = "50";
+            lblKey2.Text = "100";
+            lblKey3.Text = "150";
+            lblKey4.Text = "200";
+            lblKey5.Text = "250";
+            lblTitle.Text = "Sunshine(Hours)";
+            //end setup
+            Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
+            Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            const int monthsInAYear = 12;
+            int sunshine;
+            int spacing = 20;
+            Brush solidBrush;
+            Color solidColor = Color.Blue;
+            Rectangle solidRectangle;
+            for (int i = 0; i < monthsInAYear; i++)
+            {
+                sunshine = Convert.ToInt32(theMonths[i].getHoursSunshine());// amplifly the results by 5 times 
+
+                solidRectangle = new Rectangle(10 + spacing, (300 - sunshine), 30, sunshine);
+                using (Graphics panelGraphics = panelGraph.CreateGraphics())
+                using (solidBrush = new SolidBrush(solidColor))
+                {
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                }
+                spacing = spacing + 35;
+            }
+        }
     }
 }
