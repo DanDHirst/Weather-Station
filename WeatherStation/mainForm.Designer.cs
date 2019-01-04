@@ -61,21 +61,28 @@
             this.btnAddNewYear = new System.Windows.Forms.Button();
             this.dgdMonths = new System.Windows.Forms.DataGridView();
             this.boxMonth = new System.Windows.Forms.GroupBox();
+            this.lblSearchMonth = new System.Windows.Forms.Label();
             this.boxNewYearandMonth = new System.Windows.Forms.GroupBox();
             this.lblSetNewDescription = new System.Windows.Forms.Label();
             this.txtSetYearDescription = new System.Windows.Forms.TextBox();
             this.lblSetYear = new System.Windows.Forms.Label();
             this.txtSetNewYear = new System.Windows.Forms.TextBox();
-            this.btnEditMonth = new System.Windows.Forms.Button();
-            this.btnSaveChnages = new System.Windows.Forms.Button();
-            this.lblSearchMonth = new System.Windows.Forms.Label();
             this.btnSearchMonth = new System.Windows.Forms.Button();
             this.txtSearchMonth = new System.Windows.Forms.TextBox();
+            this.btnEditMonth = new System.Windows.Forms.Button();
+            this.btnSaveChnages = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radHoursSunshine = new System.Windows.Forms.RadioButton();
+            this.radMMRainfall = new System.Windows.Forms.RadioButton();
+            this.radNumDaysOfAirFrost = new System.Windows.Forms.RadioButton();
+            this.radMinTemp = new System.Windows.Forms.RadioButton();
+            this.radMaxTemp = new System.Windows.Forms.RadioButton();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
             this.boxMonth.SuspendLayout();
             this.boxNewYearandMonth.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -385,6 +392,14 @@
             this.boxMonth.TabStop = false;
             this.boxMonth.Text = "Month Controls";
             // 
+            // lblSearchMonth
+            // 
+            this.lblSearchMonth.AutoSize = true;
+            this.lblSearchMonth.Location = new System.Drawing.Point(116, 288);
+            this.lblSearchMonth.Name = "lblSearchMonth";
+            this.lblSearchMonth.Size = new System.Drawing.Size(0, 13);
+            this.lblSearchMonth.TabIndex = 22;
+            // 
             // boxNewYearandMonth
             // 
             this.boxNewYearandMonth.Controls.Add(this.lblSetNewDescription);
@@ -431,6 +446,23 @@
             this.txtSetNewYear.Size = new System.Drawing.Size(188, 20);
             this.txtSetNewYear.TabIndex = 9;
             // 
+            // btnSearchMonth
+            // 
+            this.btnSearchMonth.Location = new System.Drawing.Point(212, 256);
+            this.btnSearchMonth.Name = "btnSearchMonth";
+            this.btnSearchMonth.Size = new System.Drawing.Size(106, 29);
+            this.btnSearchMonth.TabIndex = 21;
+            this.btnSearchMonth.Text = "Search Month";
+            this.btnSearchMonth.UseVisualStyleBackColor = true;
+            this.btnSearchMonth.Click += new System.EventHandler(this.btnSearchMonth_Click);
+            // 
+            // txtSearchMonth
+            // 
+            this.txtSearchMonth.Location = new System.Drawing.Point(27, 265);
+            this.txtSearchMonth.Name = "txtSearchMonth";
+            this.txtSearchMonth.Size = new System.Drawing.Size(154, 20);
+            this.txtSearchMonth.TabIndex = 20;
+            // 
             // btnEditMonth
             // 
             this.btnEditMonth.Location = new System.Drawing.Point(113, 210);
@@ -451,36 +483,79 @@
             this.btnSaveChnages.UseVisualStyleBackColor = true;
             this.btnSaveChnages.Click += new System.EventHandler(this.btnSaveChnages_Click);
             // 
-            // lblSearchMonth
+            // groupBox1
             // 
-            this.lblSearchMonth.AutoSize = true;
-            this.lblSearchMonth.Location = new System.Drawing.Point(116, 288);
-            this.lblSearchMonth.Name = "lblSearchMonth";
-            this.lblSearchMonth.Size = new System.Drawing.Size(0, 13);
-            this.lblSearchMonth.TabIndex = 22;
+            this.groupBox1.Controls.Add(this.radHoursSunshine);
+            this.groupBox1.Controls.Add(this.radMMRainfall);
+            this.groupBox1.Controls.Add(this.radNumDaysOfAirFrost);
+            this.groupBox1.Controls.Add(this.radMinTemp);
+            this.groupBox1.Controls.Add(this.radMaxTemp);
+            this.groupBox1.Location = new System.Drawing.Point(1562, 33);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(258, 246);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Montly obervations";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // btnSearchMonth
+            // radHoursSunshine
             // 
-            this.btnSearchMonth.Location = new System.Drawing.Point(212, 256);
-            this.btnSearchMonth.Name = "btnSearchMonth";
-            this.btnSearchMonth.Size = new System.Drawing.Size(106, 29);
-            this.btnSearchMonth.TabIndex = 21;
-            this.btnSearchMonth.Text = "Search Month";
-            this.btnSearchMonth.UseVisualStyleBackColor = true;
-            this.btnSearchMonth.Click += new System.EventHandler(this.btnSearchMonth_Click);
+            this.radHoursSunshine.AutoSize = true;
+            this.radHoursSunshine.Location = new System.Drawing.Point(20, 209);
+            this.radHoursSunshine.Name = "radHoursSunshine";
+            this.radHoursSunshine.Size = new System.Drawing.Size(103, 17);
+            this.radHoursSunshine.TabIndex = 4;
+            this.radHoursSunshine.Text = "Sunshine(Hours)";
+            this.radHoursSunshine.UseVisualStyleBackColor = true;
             // 
-            // txtSearchMonth
+            // radMMRainfall
             // 
-            this.txtSearchMonth.Location = new System.Drawing.Point(27, 265);
-            this.txtSearchMonth.Name = "txtSearchMonth";
-            this.txtSearchMonth.Size = new System.Drawing.Size(154, 20);
-            this.txtSearchMonth.TabIndex = 20;
+            this.radMMRainfall.AutoSize = true;
+            this.radMMRainfall.Location = new System.Drawing.Point(20, 166);
+            this.radMMRainfall.Name = "radMMRainfall";
+            this.radMMRainfall.Size = new System.Drawing.Size(82, 17);
+            this.radMMRainfall.TabIndex = 3;
+            this.radMMRainfall.Text = "Rainfall(mm)";
+            this.radMMRainfall.UseVisualStyleBackColor = true;
+            // 
+            // radNumDaysOfAirFrost
+            // 
+            this.radNumDaysOfAirFrost.AutoSize = true;
+            this.radNumDaysOfAirFrost.Location = new System.Drawing.Point(20, 117);
+            this.radNumDaysOfAirFrost.Name = "radNumDaysOfAirFrost";
+            this.radNumDaysOfAirFrost.Size = new System.Drawing.Size(156, 17);
+            this.radNumDaysOfAirFrost.TabIndex = 2;
+            this.radNumDaysOfAirFrost.Text = "Number of Days Of Air Frost";
+            this.radNumDaysOfAirFrost.UseVisualStyleBackColor = true;
+            // 
+            // radMinTemp
+            // 
+            this.radMinTemp.AutoSize = true;
+            this.radMinTemp.Location = new System.Drawing.Point(20, 70);
+            this.radMinTemp.Name = "radMinTemp";
+            this.radMinTemp.Size = new System.Drawing.Size(129, 17);
+            this.radMinTemp.TabIndex = 1;
+            this.radMinTemp.Text = "Minimum Temperature";
+            this.radMinTemp.UseVisualStyleBackColor = true;
+            // 
+            // radMaxTemp
+            // 
+            this.radMaxTemp.AutoSize = true;
+            this.radMaxTemp.Checked = true;
+            this.radMaxTemp.Location = new System.Drawing.Point(20, 32);
+            this.radMaxTemp.Name = "radMaxTemp";
+            this.radMaxTemp.Size = new System.Drawing.Size(132, 17);
+            this.radMaxTemp.TabIndex = 0;
+            this.radMaxTemp.TabStop = true;
+            this.radMaxTemp.Text = "Maximum Temperature";
+            this.radMaxTemp.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 876);
+            this.ClientSize = new System.Drawing.Size(1837, 966);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSaveChnages);
             this.Controls.Add(this.boxMonth);
             this.Controls.Add(this.dgdMonths);
@@ -499,6 +574,8 @@
             this.boxMonth.PerformLayout();
             this.boxNewYearandMonth.ResumeLayout(false);
             this.boxNewYearandMonth.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -547,6 +624,12 @@
         private System.Windows.Forms.Label lblSearchMonth;
         private System.Windows.Forms.Button btnSearchMonth;
         private System.Windows.Forms.TextBox txtSearchMonth;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radMMRainfall;
+        private System.Windows.Forms.RadioButton radNumDaysOfAirFrost;
+        private System.Windows.Forms.RadioButton radMinTemp;
+        private System.Windows.Forms.RadioButton radMaxTemp;
+        private System.Windows.Forms.RadioButton radHoursSunshine;
     }
 }
 
