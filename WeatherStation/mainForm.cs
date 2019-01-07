@@ -272,7 +272,7 @@ namespace WeatherStation
 
         private void btnAddLoc_Click(object sender, EventArgs e)
         {
-            //add a new location
+            //add a new location dependent on the data entered
             string LocName, streetNumAndName, county, postCode, latitude, longitude;
             LocName = txtLocName.Text;
             streetNumAndName = txtstreetNumAndName.Text;
@@ -301,9 +301,11 @@ namespace WeatherStation
         }
         private void btnLocSearch_Click(object sender, EventArgs e)
         {
+            //search the data for location mataching the data entered by the user
             string searchQuery = txtLocSearch.Text;
             int length = Data.WeatherStationData.Length;
             bool found = false;
+            //loop through all of the locations compare each one to the search query
             for (int i = 0; i < length; i++)
             {
                 if (searchQuery == Data.WeatherStationData[i].getLocationName())
@@ -334,6 +336,7 @@ namespace WeatherStation
             Yearly[] years = Data.WeatherStationData[locationSelected].getYears();
             if (years != null)// to prevent the program crashing when a new location added and year is empty
             {
+                //loop through all of the years adding them to the list
                 foreach (Yearly y in years)
                 {
                     lstYears.Items.Add(y.getYear());
@@ -344,6 +347,7 @@ namespace WeatherStation
         }
         private void showYearData()
         {
+            //show the year data into text boxes
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Yearly yearData = theYearData[yearSelected];
             txtYear.Text = yearData.getYear().ToString();
@@ -351,6 +355,7 @@ namespace WeatherStation
         }
         private void btnEditYear_Click(object sender, EventArgs e)
         {
+            //change the desciption id dependant on the user input
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Yearly yearData = theYearData[yearSelected];
             yearData.setDescription(txtDescription.Text);
@@ -361,7 +366,7 @@ namespace WeatherStation
 
         }
 
-        private void btnAddNewYear_Click(object sender, EventArgs e)
+        private void btnAddNewYear_Click(object sender, EventArgs e)//adds a new year and creates the monthly data but is all blank
         {
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             int theYear;
@@ -431,7 +436,7 @@ namespace WeatherStation
         /// loops sequentially through the years comapring it to the user input
         /// </summary>
 
-        private void btnSearchYearData_Click(object sender, EventArgs e)
+        private void btnSearchYearData_Click(object sender, EventArgs e)// loop through all of the years comparing it to the user input
         {
             string searchQuery = txtSearchYear.Text;
             int length = Data.WeatherStationData[locationSelected].getYears().Length;
@@ -475,7 +480,7 @@ namespace WeatherStation
             dgdMonths.Columns[4].HeaderText = "(mm) of rainfall";
             dgdMonths.Columns[5].HeaderText = "Sunshine(hrs)";
         }
-
+        //end year
         /// <summary>
         /// All of the month routines
         /// </summary>
@@ -485,15 +490,16 @@ namespace WeatherStation
             const int rows = 12;
             const int cols = 6;
 
-            //show the data
+            //show the data passing the rows and cols
             showMonthData(rows,cols);
 
         }
         private void showMonthData(int rows, int cols)
         {
-
+            //get the months for the correct location and year
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            //loop through each row saving the value from the month year selected
             for (int i = 0; i < rows; i++)
             {
                     Monthly month = theMonths[i];
@@ -512,6 +518,7 @@ namespace WeatherStation
             const int rows = 12;
             Yearly[] theYearData = Data.WeatherStationData[locationSelected].getYears();
             Monthly[] theMonths = theYearData[yearSelected].getMonths();
+            //loop through all the grid to save all the changes
             for (int i = 0; i < rows; i++)
             {
                 Monthly month = theMonths[i];
@@ -527,6 +534,7 @@ namespace WeatherStation
         private void btnSearchMonth_Click(object sender, EventArgs e)
         {
             string searchQuery = txtSearchMonth.Text;
+            //checking if the location and year is selected
             if (locationSelected >= 0 && yearSelected >= 0)
             {
                 Yearly[] theyear = Data.WeatherStationData[locationSelected].getYears();
@@ -537,6 +545,7 @@ namespace WeatherStation
                 bool found = false;
                 try
                 {
+                    //loop though all month id for selected year and if macthes id highlight it
                     for (int i = 0; i < length; i++)
                     {
                         if (theMonths[i].getId() == searchQuery)
@@ -585,6 +594,7 @@ namespace WeatherStation
 
         private void radMaxTemp_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the data draw on
             panelGraph.Refresh();
             //set up the legend
             lblKey1.Text = "5";
@@ -619,6 +629,7 @@ namespace WeatherStation
 
         private void radMinTemp_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the data draw on
             panelGraph.Refresh();
             //set up the legend
             lblKey1.Text = "5";
@@ -671,6 +682,7 @@ namespace WeatherStation
 
         private void radNumDaysOfAirFrost_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the data draw on
             panelGraph.Refresh();
             //set up the legend
             lblKey1.Text = "5";
@@ -684,19 +696,19 @@ namespace WeatherStation
             Monthly[] theMonths = theYearData[yearSelected].getMonths();
             const int monthsInAYear = 12;
             int airFrost;
-            int spacing = 20;
+            int spacing = 20; // spacing so the rectangles arent all on one location
             Brush solidBrush;
-            Color solidColor = Color.Blue;
+            Color solidColor = Color.Blue; //select color to blue
             Rectangle solidRectangle;
             for (int i = 0; i < monthsInAYear; i++)
             {
                 airFrost = Convert.ToInt32(theMonths[i].getNumDaysAirFrost() * 10);// amplifly the results by 10 times 
-
+                //draw graphics dependent on the data
                 solidRectangle = new Rectangle(10 + spacing, (300 - airFrost), 30, airFrost);
                 using (Graphics panelGraphics = panelGraph.CreateGraphics())
                 using (solidBrush = new SolidBrush(solidColor))
                 {
-                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);//draw graphics
                 }
                 spacing = spacing + 35;
             }
@@ -704,6 +716,7 @@ namespace WeatherStation
 
         private void radMMRainfall_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the data draw on
             panelGraph.Refresh();
             //set up the legend
             lblKey1.Text = "50";
@@ -729,7 +742,7 @@ namespace WeatherStation
                 using (Graphics panelGraphics = panelGraph.CreateGraphics())
                 using (solidBrush = new SolidBrush(solidColor))
                 {
-                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);//draw graphics
                 }
                 spacing = spacing + 35;
             }
@@ -737,6 +750,7 @@ namespace WeatherStation
 
         private void radHoursSunshine_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the data draw on
             panelGraph.Refresh();
             //set up the legend
             lblKey1.Text = "50";
@@ -762,7 +776,7 @@ namespace WeatherStation
                 using (Graphics panelGraphics = panelGraph.CreateGraphics())
                 using (solidBrush = new SolidBrush(solidColor))
                 {
-                    panelGraphics.FillRectangle(solidBrush, solidRectangle);
+                    panelGraphics.FillRectangle(solidBrush, solidRectangle);//draw graphics
                 }
                 spacing = spacing + 35;
             }
