@@ -80,6 +80,7 @@
             this.radMaxTemp = new System.Windows.Forms.RadioButton();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.boxGraph = new System.Windows.Forms.GroupBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.lblKey1 = new System.Windows.Forms.Label();
             this.lblKey5 = new System.Windows.Forms.Label();
             this.lblKey4 = new System.Windows.Forms.Label();
@@ -98,9 +99,7 @@
             this.lblMonth5 = new System.Windows.Forms.Label();
             this.lblMonth7 = new System.Windows.Forms.Label();
             this.lblMonth6 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.lblMonthGraph = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.boxLocaData.SuspendLayout();
             this.boxYearData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgdMonths)).BeginInit();
@@ -607,6 +606,15 @@
             this.boxGraph.TabStop = false;
             this.boxGraph.Text = "Graph";
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(182, 16);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(155, 13);
+            this.lblTitle.TabIndex = 36;
+            this.lblTitle.Text = "Maximum Temperature (celsuis)";
+            // 
             // lblKey1
             // 
             this.lblKey1.AutoSize = true;
@@ -769,15 +777,6 @@
             this.lblMonth6.TabIndex = 7;
             this.lblMonth6.Text = "6";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 34;
-            this.label13.Text = "label13";
-            // 
             // lblMonthGraph
             // 
             this.lblMonthGraph.AutoSize = true;
@@ -787,15 +786,6 @@
             this.lblMonthGraph.TabIndex = 35;
             this.lblMonthGraph.Text = "Months";
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(182, 16);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(155, 13);
-            this.lblTitle.TabIndex = 36;
-            this.lblTitle.Text = "Maximum Temperature (celsuis)";
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -803,7 +793,6 @@
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1837, 966);
             this.Controls.Add(this.lblMonthGraph);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.boxGraph);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSaveChnages);
@@ -899,7 +888,6 @@
         private System.Windows.Forms.Label lblMonth5;
         private System.Windows.Forms.Label lblMonth7;
         private System.Windows.Forms.Label lblMonth6;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblMonthGraph;
         private System.Windows.Forms.Label lblKey5;
         private System.Windows.Forms.Label lblKey4;
